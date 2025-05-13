@@ -1,0 +1,133 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FootballLeague.Views.LeagueTablePage"
+             xmlns:vm="clr-namespace:FootballLeague.ViewModels"
+             xmlns:model="clr-namespace:FootballLeague.Models"
+             xmlns:converters="clr-namespace:FootballLeague.Converters"
+             x:DataType="vm:LeagueTableViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ItemIndexConverter x:Key="ItemIndexConverter" />
+
+            <Color x:Key="TableHeaderBackgroundColor">#E8E8E8</Color>
+            <Color x:Key="TableRowEvenBackgroundColor">#FFFFFF</Color>
+            <Color x:Key="TableRowOddBackgroundColor">#F9F9F9</Color>
+            <Color x:Key="TableSeparatorColor">#D1D1D1</Color>
+            <Color x:Key="PrimaryTextColor">#333333</Color>
+            <Color x:Key="SecondaryTextColor">#666666</Color>
+            <Color x:Key="PointsTextColor">#007AFF</Color>
+
+            <Style x:Key="TableCellLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryTextColor}, Dark={StaticResource White}}" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Padding" Value="8,0" />
+            </Style>
+
+            <Style x:Key="TableHeaderLabelStyle" TargetType="Label" BasedOn="{StaticResource TableCellLabelStyle}">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource SecondaryTextColor}, Dark={StaticResource LightGray}}" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="Padding" Value="8,5" />
+            </Style>
+
+            <Style x:Key="ClubNameLabelStyle" TargetType="Label" BasedOn="{StaticResource TableCellLabelStyle}">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+            </Style>
+
+            <Style x:Key="PointsLabelStyle" TargetType="Label" BasedOn="{StaticResource TableCellLabelStyle}">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PointsTextColor}, Dark={StaticResource Cyan}}" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+            <Style x:Key="NumericCellLabelStyle" TargetType="Label" BasedOn="{StaticResource TableCellLabelStyle}">
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, *" Margin="0">
+        <RefreshView Grid.Row="1" Command="{Binding LoadLeagueTableCommand}" IsRefreshing="{Binding IsBusy}" RefreshColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource LightBlue}}">
+            <CollectionView ItemsSource="{Binding LeagueEntries}"
+                            SelectionMode="None"
+                            Margin="10">
+                <CollectionView.Header>
+                    <Grid Padding="0,8" BackgroundColor="{AppThemeBinding Light={StaticResource TableHeaderBackgroundColor}, Dark={StaticResource Gray600}}" ColumnSpacing="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" Text="Lp." Style="{StaticResource TableHeaderLabelStyle}" />
+                        <Label Grid.Column="1" Text="Klub" Style="{StaticResource TableHeaderLabelStyle}" HorizontalTextAlignment="Start"/>
+                        <Label Grid.Column="2" Text="M" Style="{StaticResource TableHeaderLabelStyle}"/>
+                        <Label Grid.Column="3" Text="Pkt" Style="{StaticResource TableHeaderLabelStyle}"/>
+                        <Label Grid.Column="4" Text="Z" Style="{StaticResource TableHeaderLabelStyle}"/>
+                        <Label Grid.Column="5" Text="R" Style="{StaticResource TableHeaderLabelStyle}"/>
+                        <Label Grid.Column="6" Text="P" Style="{StaticResource TableHeaderLabelStyle}"/>
+                        <Label Grid.Column="7" Text="Bramki" Style="{StaticResource TableHeaderLabelStyle}"/>
+                    </Grid>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:LeagueTableEntry">
+                        <Grid Padding="0,10" ColumnSpacing="1">
+                            <Grid.Style>
+                                <Style TargetType="Grid">
+                                    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource TableRowEvenBackgroundColor}, Dark={StaticResource Gray500}}" />
+                                    <Style.Triggers>
+                                        <DataTrigger TargetType="Grid" Binding="{Binding IsOddRow}" Value="True">
+                                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource TableRowOddBackgroundColor}, Dark={StaticResource Gray400}}" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Style>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" Text="{Binding ., Converter={StaticResource ItemIndexConverter}, ConverterParameter={Binding Source={RelativeSource AncestorType={x:Type CollectionView}}, Path=ItemsSource}}" Style="{StaticResource NumericCellLabelStyle}" />
+                            <Label Grid.Column="1" Text="{Binding NazwaKlubu}" Style="{StaticResource ClubNameLabelStyle}"/>
+                            <Label Grid.Column="2" Text="{Binding MeczeRozegrane}" Style="{StaticResource NumericCellLabelStyle}"/>
+                            <Label Grid.Column="3" Text="{Binding Punkty}" Style="{StaticResource PointsLabelStyle}"/>
+                            <Label Grid.Column="4" Text="{Binding Zwyciestwa}" Style="{StaticResource NumericCellLabelStyle}"/>
+                            <Label Grid.Column="5" Text="{Binding Remisy}" Style="{StaticResource NumericCellLabelStyle}"/>
+                            <Label Grid.Column="6" Text="{Binding Porazki}" Style="{StaticResource NumericCellLabelStyle}"/>
+                            <Label Grid.Column="7" Style="{StaticResource NumericCellLabelStyle}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding BramkiZdobyte}"/>
+                                        <Span Text=":"/>
+                                        <Span Text="{Binding BramkiStracone}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <BoxView Grid.ColumnSpan="8" HeightRequest="1" Color="{AppThemeBinding Light={StaticResource TableSeparatorColor}, Dark={StaticResource Gray300}}" VerticalOptions="End" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <StackLayout Padding="20" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label Text="Brak danych do wyświetlenia w tabeli." HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </CollectionView.EmptyView>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>

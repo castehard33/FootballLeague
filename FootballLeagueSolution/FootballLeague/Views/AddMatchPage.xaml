@@ -1,0 +1,39 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FootballLeague.Views.AddMatchPage"
+             xmlns:vm="clr-namespace:FootballLeague.ViewModels"
+             xmlns:model="clr-namespace:FootballLeague.Models" 
+             x:DataType="vm:AddMatchViewModel"
+             Title="{Binding Title}">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Padding="20">
+            <Label Text="Gospodarz:" />
+            <Picker ItemsSource="{Binding AvailableClubs}"
+                    ItemDisplayBinding="{Binding Nazwa}"
+                    SelectedItem="{Binding SelectedHomeTeam}"
+                    Title="Wybierz gospodarza" />
+
+            <Label Text="Gość:" />
+            <Picker ItemsSource="{Binding AvailableClubs}"
+                    ItemDisplayBinding="{Binding Nazwa}"
+                    SelectedItem="{Binding SelectedAwayTeam}"
+                    Title="Wybierz gościa" />
+
+            <Label Text="Data Meczu:" />
+            <DatePicker Date="{Binding MatchDate}" />
+
+            <Label Text="Wynik Gospodarzy (opcjonalnie):" />
+            <Entry Text="{Binding HomeScore}" Placeholder="0" Keyboard="Numeric" MaxLength="2" />
+
+            <Label Text="Wynik Gości (opcjonalnie):" />
+            <Entry Text="{Binding AwayScore}" Placeholder="0" Keyboard="Numeric" MaxLength="2" />
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Margin="0,20,0,0">
+                <Button Grid.Column="0" Text="Zapisz Mecz" Command="{Binding SaveMatchCommand}" IsEnabled="{Binding IsNotBusy}"/>
+                <Button Grid.Column="1" Text="Anuluj" Command="{Binding CancelCommand}" />
+            </Grid>
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
