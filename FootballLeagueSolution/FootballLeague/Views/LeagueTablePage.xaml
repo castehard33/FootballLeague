@@ -10,15 +10,20 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:ItemIndexConverter x:Key="ItemIndexConverter" />
+
 
             <Color x:Key="TableHeaderBackgroundColor">#E8E8E8</Color>
             <Color x:Key="TableRowEvenBackgroundColor">#FFFFFF</Color>
             <Color x:Key="TableRowOddBackgroundColor">#F9F9F9</Color>
-            <Color x:Key="TableSeparatorColor">#D1D1D1</Color>
             <Color x:Key="PrimaryTextColor">#333333</Color>
             <Color x:Key="SecondaryTextColor">#666666</Color>
             <Color x:Key="PointsTextColor">#007AFF</Color>
+
+
+            <Color x:Key="Top4RowBackground">#2D65A7</Color>
+            <Color x:Key="Position5RowBackground">#6D2E39</Color>
+            <Color x:Key="Position6RowBackground">#B08D2B</Color>
+            <Color x:Key="RankedRowText">#FFFFFF</Color>
 
             <Style x:Key="TableCellLabelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryTextColor}, Dark={StaticResource White}}" />
@@ -40,7 +45,7 @@
 
             <Style x:Key="PointsLabelStyle" TargetType="Label" BasedOn="{StaticResource TableCellLabelStyle}">
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PointsTextColor}, Dark={StaticResource Cyan}}" />
+                <Setter Property="TextColor" Value="{StaticResource DarkGreenPointsColor}" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
             </Style>
             <Style x:Key="NumericCellLabelStyle" TargetType="Label" BasedOn="{StaticResource TableCellLabelStyle}">
@@ -87,6 +92,26 @@
                                         <DataTrigger TargetType="Grid" Binding="{Binding IsOddRow}" Value="True">
                                             <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource TableRowOddBackgroundColor}, Dark={StaticResource Gray400}}" />
                                         </DataTrigger>
+
+                                        
+                                        <DataTrigger TargetType="Grid" Binding="{Binding Position}" Value="6">
+                                            <Setter Property="BackgroundColor" Value="{StaticResource Position6RowBackground}" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Grid" Binding="{Binding Position}" Value="5">
+                                            <Setter Property="BackgroundColor" Value="{StaticResource Position5RowBackground}" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Grid" Binding="{Binding Position}" Value="4">
+                                            <Setter Property="BackgroundColor" Value="{StaticResource Top4RowBackground}" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Grid" Binding="{Binding Position}" Value="3">
+                                            <Setter Property="BackgroundColor" Value="{StaticResource Top4RowBackground}" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Grid" Binding="{Binding Position}" Value="2">
+                                            <Setter Property="BackgroundColor" Value="{StaticResource Top4RowBackground}" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Grid" Binding="{Binding Position}" Value="1">
+                                            <Setter Property="BackgroundColor" Value="{StaticResource Top4RowBackground}" />
+                                        </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Grid.Style>
@@ -102,14 +127,14 @@
                                 <ColumnDefinition Width="2*" />
                             </Grid.ColumnDefinitions>
 
-                            <Label Grid.Column="0" Text="{Binding ., Converter={StaticResource ItemIndexConverter}, ConverterParameter={Binding Source={RelativeSource AncestorType={x:Type CollectionView}}, Path=ItemsSource}}" Style="{StaticResource NumericCellLabelStyle}" />
-                            <Label Grid.Column="1" Text="{Binding NazwaKlubu}" Style="{StaticResource ClubNameLabelStyle}"/>
-                            <Label Grid.Column="2" Text="{Binding MeczeRozegrane}" Style="{StaticResource NumericCellLabelStyle}"/>
-                            <Label Grid.Column="3" Text="{Binding Punkty}" Style="{StaticResource PointsLabelStyle}"/>
-                            <Label Grid.Column="4" Text="{Binding Zwyciestwa}" Style="{StaticResource NumericCellLabelStyle}"/>
-                            <Label Grid.Column="5" Text="{Binding Remisy}" Style="{StaticResource NumericCellLabelStyle}"/>
-                            <Label Grid.Column="6" Text="{Binding Porazki}" Style="{StaticResource NumericCellLabelStyle}"/>
-                            <Label Grid.Column="7" Style="{StaticResource NumericCellLabelStyle}">
+                            <Label Grid.Column="0" Text="{Binding Position}" Style="{StaticResource NumericCellLabelStyle}" />
+                            <Label Grid.Column="1" x:Name="ClubNameLabel" Text="{Binding NazwaKlubu}" Style="{StaticResource ClubNameLabelStyle}"/>
+                            <Label Grid.Column="2" x:Name="MatchesPlayedLabel" Text="{Binding MeczeRozegrane}" Style="{StaticResource NumericCellLabelStyle}"/>
+                            <Label Grid.Column="3" x:Name="PointsLabel" Text="{Binding Punkty}" Style="{StaticResource PointsLabelStyle}"/>
+                            <Label Grid.Column="4" x:Name="WinsLabel" Text="{Binding Zwyciestwa}" Style="{StaticResource NumericCellLabelStyle}"/>
+                            <Label Grid.Column="5" x:Name="DrawsLabel" Text="{Binding Remisy}" Style="{StaticResource NumericCellLabelStyle}"/>
+                            <Label Grid.Column="6" x:Name="LossesLabel" Text="{Binding Porazki}" Style="{StaticResource NumericCellLabelStyle}"/>
+                            <Label Grid.Column="7" x:Name="GoalsLabel" Style="{StaticResource NumericCellLabelStyle}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{Binding BramkiZdobyte}"/>
@@ -118,7 +143,39 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <BoxView Grid.ColumnSpan="8" HeightRequest="1" Color="{AppThemeBinding Light={StaticResource TableSeparatorColor}, Dark={StaticResource Gray300}}" VerticalOptions="End" />
+
+                            <Grid.Resources>
+                                <Style TargetType="Label" BasedOn="{StaticResource TableCellLabelStyle}">
+                                    <Style.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type Grid}}, Path=BackgroundColor}" Value="{StaticResource Top4RowBackground}">
+                                            <Setter Property="TextColor" Value="{StaticResource RankedRowText}" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type Grid}}, Path=BackgroundColor}" Value="{StaticResource Position5RowBackground}">
+                                            <Setter Property="TextColor" Value="{StaticResource RankedRowText}" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type Grid}}, Path=BackgroundColor}" Value="{StaticResource Position6RowBackground}">
+                                            <Setter Property="TextColor" Value="{StaticResource RankedRowText}" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                                
+                                
+                                <Style TargetType="Label" x:Key="RankedPointsLabelStyle" BasedOn="{StaticResource PointsLabelStyle}">
+                                    <Style.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type Grid}}, Path=BackgroundColor}" Value="{StaticResource Top4RowBackground}">
+                                            <Setter Property="TextColor" Value="{StaticResource RankedRowText}" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type Grid}}, Path=BackgroundColor}" Value="{StaticResource Position5RowBackground}">
+                                            <Setter Property="TextColor" Value="{StaticResource RankedRowText}" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type Grid}}, Path=BackgroundColor}" Value="{StaticResource Position6RowBackground}">
+                                            <Setter Property="TextColor" Value="{StaticResource RankedRowText}" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Resources>
+
+
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

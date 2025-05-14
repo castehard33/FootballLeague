@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using System;
+using System.Diagnostics;
 
 namespace FootballLeague.ViewModels
 {
@@ -17,19 +18,19 @@ namespace FootballLeague.ViewModels
         public ObservableCollection<Club> AvailableClubs { get; } = new();
 
         [ObservableProperty]
-        Club selectedHomeTeam;
+        Club? _selectedHomeTeam;
 
         [ObservableProperty]
-        Club selectedAwayTeam;
+        Club? _selectedAwayTeam;
 
         [ObservableProperty]
-        DateTime matchDate = DateTime.Today;
+        DateTime _matchDate = DateTime.Today;
 
         [ObservableProperty]
-        string homeScore;
+        string? _homeScore;
 
         [ObservableProperty]
-        string awayScore;
+        string? _awayScore;
 
 
         public AddMatchViewModel(MatchService matchService, ClubService clubService)
@@ -54,6 +55,11 @@ namespace FootballLeague.ViewModels
             }
             catch (Exception ex)
             {
+                Debug.WriteLine($"Błąd podczas ładowania klubów: {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    Debug.WriteLine($"Inner Exception (ładowanie klubów): {ex.InnerException.Message}");
+                }
                 await Shell.Current.DisplayAlert("Błąd", $"Nie udało się załadować klubów: {ex.Message}", "OK");
             }
             finally
@@ -65,22 +71,22 @@ namespace FootballLeague.ViewModels
         [RelayCommand]
         async Task SaveMatchAsync()
         {
-            if (SelectedHomeTeam == null || SelectedAwayTeam == null)
+            if (_selectedHomeTeam == null || _selectedAwayTeam == null)
             {
                 await Shell.Current.DisplayAlert("Błąd", "Wybierz obie drużyny.", "OK");
                 return;
             }
 
-            if (SelectedHomeTeam.IdKlubu == SelectedAwayTeam.IdKlubu)
+            if (_selectedHomeTeam.IdKlubu == _selectedAwayTeam.IdKlubu)
             {
                 await Shell.Current.DisplayAlert("Błąd", "Gospodarz i gość nie mogą być tym samym klubem.", "OK");
                 return;
             }
 
             byte? parsedHomeScore = null;
-            if (!string.IsNullOrWhiteSpace(HomeScore))
+            if (!string.IsNullOrWhiteSpace(_homeScore))
             {
-                if (byte.TryParse(HomeScore, out byte hs))
+                if (byte.TryParse(_homeScore, out byte hs))
                     parsedHomeScore = hs;
                 else
                 {
@@ -89,9 +95,9 @@ namespace FootballLeague.ViewModels
             }
 
             byte? parsedAwayScore = null;
-            if (!string.IsNullOrWhiteSpace(AwayScore))
+            if (!string.IsNullOrWhiteSpace(_awayScore))
             {
-                if (byte.TryParse(AwayScore, out byte as_))
+                if (byte.TryParse(_awayScore, out byte as_))
                     parsedAwayScore = as_;
                 else
                 {
@@ -104,10 +110,11 @@ namespace FootballLeague.ViewModels
                 await Shell.Current.DisplayAlert("Błąd", "Podaj oba wyniki lub żaden (dla meczu nierozegranego).", "OK"); return;
             }
 
-            var newMatch = new Models.Match 
+            var newMatch = new Models.Match
             {
-                IdGospodarza = SelectedHomeTeam.IdKlubu,
-                IdGoscia = SelectedAwayTeam.IdKlubu,
+
+                IdGospodarza = SelectedHomeTeam!.IdKlubu,
+                IdGoscia = SelectedAwayTeam!.IdKlubu,
                 DataMeczu = MatchDate,
                 BramkiGospodarza = parsedHomeScore,
                 BramkiGoscia = parsedAwayScore
@@ -118,12 +125,49 @@ namespace FootballLeague.ViewModels
             {
                 await _matchService.AddMatchAsync(newMatch);
                 await Shell.Current.DisplayAlert("Sukces", "Mecz dodany!", "OK");
+
+
                 MessagingCenter.Send(this, "MatchAdded");
+
+
                 await Shell.Current.GoToAsync("..");
             }
             catch (Exception ex)
             {
-                await Shell.Current.DisplayAlert("Błąd", $"Nie udało się dodać meczu: {ex.Message}", "OK");
+                Debug.WriteLine("--------------------------------------------------");
+                Debug.WriteLine($"BŁĄD PODCZAS ZAPISYWANIA MECZU: {ex.GetType().FullName}");
+                Debug.WriteLine($"Message: {ex.Message}");
+                Debug.WriteLine($"StackTrace: {ex.StackTrace}");
+
+                Exception? innerEx = ex.InnerException;
+                int depth = 1;
+                while (innerEx != null)
+                {
+                    Debug.WriteLine($"--- Inner Exception (Poziom {depth}) ---");
+                    Debug.WriteLine($"Inner Exception Type: {innerEx.GetType().FullName}");
+                    Debug.WriteLine($"Inner Exception Message: {innerEx.Message}");
+                    Debug.WriteLine($"Inner Exception StackTrace: {innerEx.StackTrace}");
+                    innerEx = innerEx.InnerException;
+                    depth++;
+                }
+                Debug.WriteLine("--------------------------------------------------");
+
+
+                string errorMessage = "Nie udało się dodać meczu.";
+                if (ex.InnerException != null)
+                {
+
+                    errorMessage += $"\n\nSzczegóły błędu (dla dewelopera):\n{ex.InnerException.Message}";
+                    if (ex.InnerException.InnerException != null)
+                    {
+                        errorMessage += $"\n{ex.InnerException.InnerException.Message}";
+                    }
+                }
+                else
+                {
+                    errorMessage += $"\n\nSzczegóły błędu (dla dewelopera):\n{ex.Message}";
+                }
+                await Shell.Current.DisplayAlert("Błąd Krytyczny", errorMessage, "OK");
             }
             finally
             {
@@ -139,7 +183,10 @@ namespace FootballLeague.ViewModels
 
         public async Task OnAppearing()
         {
-            await LoadClubsAsync();
+            if (AvailableClubs.Count == 0 && !IsBusy)
+            {
+                await LoadClubsAsync();
+            }
         }
     }
 }

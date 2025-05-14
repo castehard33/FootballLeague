@@ -12,6 +12,10 @@
         public int BramkiStracone { get; set; }
         public int RoznicaBramek => BramkiZdobyte - BramkiStracone;
         public int Punkty => (Zwyciestwa * 3) + Remisy;
+
+
         public bool IsOddRow { get; set; }
+
+        public int Position { get; set; }
     }
 }

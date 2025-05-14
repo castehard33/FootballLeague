@@ -33,6 +33,7 @@ namespace FootballLeague.ViewModels
                 {
                     var entry = entriesFromService[i];
                     entry.IsOddRow = (i % 2 != 0); //dla zebry
+                    entry.Position = i + 1; //obliczenie pozycji
                     LeagueEntries.Add(entry);
                 }
             }

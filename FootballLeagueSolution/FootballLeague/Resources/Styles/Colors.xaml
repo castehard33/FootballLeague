@@ -29,7 +29,8 @@
     <Color x:Key="Gray950">#141414</Color>
     <Color x:Key="LightGray">#D3D3D3</Color>
     <Color x:Key="LightBlue">#ADD8E6</Color>
-    <Color x:Key="Cyan">#00FFFF</Color>
+    
+    <Color x:Key="DarkGreenPointsColor">#006400</Color>
 
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
