@@ -590,3 +590,4 @@ C:\Users\bmedr\Desktop\REPOs\FootballLeague\FootballLeagueSolution\FootballLeagu
 C:\Users\bmedr\Desktop\REPOs\FootballLeague\FootballLeagueSolution\FootballLeague\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt
 C:\Users\bmedr\Desktop\REPOs\FootballLeague\FootballLeagueSolution\FootballLeague\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 C:\Users\bmedr\Desktop\REPOs\FootballLeague\FootballLeagueSolution\FootballLeague\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
+C:\Users\bmedr\Desktop\REPOs\FootballLeague\FootballLeagueSolution\FootballLeague\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\FootballLeague.sourcelink.json
