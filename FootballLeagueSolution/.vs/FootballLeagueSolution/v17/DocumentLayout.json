@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\viewmodels\\addmatchviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\viewmodels\\addmatchviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -30,11 +34,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "AppShell.xaml",
+              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\AppShell.xaml",
+              "RelativeDocumentMoniker": "FootballLeague\\AppShell.xaml",
+              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\AppShell.xaml*",
+              "RelativeToolTip": "FootballLeague\\AppShell.xaml*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-28T13:52:45.298Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "AddMatchPage.xaml",
               "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Views\\AddMatchPage.xaml",
               "RelativeDocumentMoniker": "FootballLeague\\Views\\AddMatchPage.xaml",
@@ -42,12 +59,11 @@
               "RelativeToolTip": "FootballLeague\\Views\\AddMatchPage.xaml",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-28T13:18:34.062Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T13:18:34.062Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AddMatchPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Views\\AddMatchPage.xaml.cs",
               "RelativeDocumentMoniker": "FootballLeague\\Views\\AddMatchPage.xaml.cs",
@@ -55,25 +71,24 @@
               "RelativeToolTip": "FootballLeague\\Views\\AddMatchPage.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T13:18:03.506Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T13:18:03.506Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AddMatchViewModel.cs",
               "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\AddMatchViewModel.cs",
               "RelativeDocumentMoniker": "FootballLeague\\ViewModels\\AddMatchViewModel.cs",
               "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\AddMatchViewModel.cs",
               "RelativeToolTip": "FootballLeague\\ViewModels\\AddMatchViewModel.cs",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAkwGsAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAkwGsAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-28T13:17:05.283Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Match.cs",
               "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Models\\Match.cs",
               "RelativeDocumentMoniker": "FootballLeague\\Models\\Match.cs",
@@ -81,12 +96,11 @@
               "RelativeToolTip": "FootballLeague\\Models\\Match.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T13:15:40.078Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T13:15:40.078Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Club.cs",
               "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Models\\Club.cs",
               "RelativeDocumentMoniker": "FootballLeague\\Models\\Club.cs",
@@ -94,8 +108,7 @@
               "RelativeToolTip": "FootballLeague\\Models\\Club.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T13:24:20.885Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T13:24:20.885Z"
             }
           ]
         }

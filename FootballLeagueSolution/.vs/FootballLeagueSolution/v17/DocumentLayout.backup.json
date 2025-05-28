@@ -42,8 +42,7 @@
               "RelativeToolTip": "FootballLeague\\Views\\AddMatchPage.xaml",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-28T13:18:34.062Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T13:18:34.062Z"
             },
             {
               "$type": "Document",
@@ -55,8 +54,7 @@
               "RelativeToolTip": "FootballLeague\\Views\\AddMatchPage.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T13:18:03.506Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T13:18:03.506Z"
             },
             {
               "$type": "Document",
@@ -64,9 +62,9 @@
               "Title": "AddMatchViewModel.cs",
               "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\AddMatchViewModel.cs",
               "RelativeDocumentMoniker": "FootballLeague\\ViewModels\\AddMatchViewModel.cs",
-              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\AddMatchViewModel.cs*",
-              "RelativeToolTip": "FootballLeague\\ViewModels\\AddMatchViewModel.cs*",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAkwGsAAAAnAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\AddMatchViewModel.cs",
+              "RelativeToolTip": "FootballLeague\\ViewModels\\AddMatchViewModel.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAkwGsAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-28T13:17:05.283Z",
               "EditorCaption": ""
@@ -81,8 +79,7 @@
               "RelativeToolTip": "FootballLeague\\Models\\Match.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T13:15:40.078Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T13:15:40.078Z"
             },
             {
               "$type": "Document",
@@ -94,8 +91,7 @@
               "RelativeToolTip": "FootballLeague\\Models\\Club.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T13:24:20.885Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T13:24:20.885Z"
             }
           ]
         }
