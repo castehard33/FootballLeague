@@ -17,6 +17,8 @@ namespace FootballLeague.Models
         [ForeignKey("IdGoscia")]
         public virtual Club? Gosc { get; set; }    
 
+        public int IdStadionu { get; set; }
+
         public byte? BramkiGospodarza { get; set; }
         public byte? BramkiGoscia { get; set; }
 

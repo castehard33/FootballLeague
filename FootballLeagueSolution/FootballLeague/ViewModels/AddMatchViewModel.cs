@@ -117,7 +117,8 @@ namespace FootballLeague.ViewModels
                 IdGoscia = SelectedAwayTeam!.IdKlubu,
                 DataMeczu = MatchDate,
                 BramkiGospodarza = parsedHomeScore,
-                BramkiGoscia = parsedAwayScore
+                BramkiGoscia = parsedAwayScore,
+                IdStadionu = SelectedHomeTeam.IdStadionu
             };
 
             IsBusy = true;
