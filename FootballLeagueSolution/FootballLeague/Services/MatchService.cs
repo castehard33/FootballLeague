@@ -1,5 +1,6 @@
 ﻿using FootballLeague.Data;
 using FootballLeague.Models;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace FootballLeague.Services
@@ -21,6 +22,15 @@ namespace FootballLeague.Services
             }
             _context.Mecze.Add(match);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<Match>> GetMatchesAsync()
+        {
+            return await _context.Mecze
+                                 .Include(m => m.Gospodarz)  // Dołączamy nazwy klubów
+                                 .Include(m => m.Gosc)
+                                 .OrderByDescending(m => m.DataMeczu) // Domyślne sortowanie
+                                 .ToListAsync();
         }
     }
 }

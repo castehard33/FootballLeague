@@ -19,6 +19,7 @@ namespace FootballLeague.Models
 
         public int IdStadionu { get; set; }
 
+        
         public byte? BramkiGospodarza { get; set; }
         public byte? BramkiGoscia { get; set; }
 

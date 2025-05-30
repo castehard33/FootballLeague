@@ -54,9 +54,11 @@ namespace FootballLeague
 
             builder.Services.AddTransient<LeagueTableViewModel>();
             builder.Services.AddTransient<AddMatchViewModel>();
+            builder.Services.AddTransient<ViewMatchesViewModel>();
 
             builder.Services.AddTransient<LeagueTablePage>();
             builder.Services.AddTransient<AddMatchPage>();
+            builder.Services.AddTransient<ViewMatchesPage>();
 
 #if DEBUG
             builder.Logging.AddDebug();

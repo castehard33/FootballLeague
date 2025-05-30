@@ -16,8 +16,8 @@
             ContentTemplate="{DataTemplate views:AddMatchPage}"
             Route="AddMatchPage" />
         <ShellContent
-            Title="Zobacz Wyniki"
-            ContentTemplate="{DataTemplate views:ViewMatchPage}"
-            Route="ViewMatchPage" />
+            Title="Lista Meczow"
+            ContentTemplate="{DataTemplate views:ViewMatchesPage}"
+            Route="ViewMatchesPage" />
     </FlyoutItem>
 </Shell>

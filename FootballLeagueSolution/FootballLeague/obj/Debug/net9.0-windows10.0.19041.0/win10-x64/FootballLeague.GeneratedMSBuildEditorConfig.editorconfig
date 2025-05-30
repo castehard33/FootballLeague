@@ -77,8 +77,8 @@ build_metadata.AdditionalFiles.ManifestResourceName = FootballLeague.Views.Leagu
 build_metadata.AdditionalFiles.TargetPath = Views\LeagueTablePage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\LeagueTablePage.xaml
 
-[C:/Users/bmedr/Desktop/REPOs/FootballLeague/FootballLeagueSolution/FootballLeague/Views/ViewMatchPage.xaml]
+[C:/Users/bmedr/Desktop/REPOs/FootballLeague/FootballLeagueSolution/FootballLeague/Views/ViewMatchesPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = FootballLeague.Views.ViewMatchPage.xaml
-build_metadata.AdditionalFiles.TargetPath = Views\ViewMatchPage.xaml
-build_metadata.AdditionalFiles.RelativePath = Views\ViewMatchPage.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FootballLeague.Views.ViewMatchesPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ViewMatchesPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ViewMatchesPage.xaml
