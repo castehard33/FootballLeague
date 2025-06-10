@@ -1,4 +1,3 @@
-<!-- Plik: Views/ViewMatchesPage.xaml -->
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FootballLeague.Views.ViewMatchesPage"
@@ -8,7 +7,7 @@
              Title="{Binding Title}">
 
     <Grid RowDefinitions="Auto, *">
-        <!-- Sekcja Filtrów -->
+
         <VerticalStackLayout Grid.Row="0" Padding="10" Spacing="10" BackgroundColor="{AppThemeBinding Light=#F0F0F0, Dark=#303030}">
             <Label Text="Filtruj Mecze" FontSize="Medium" FontAttributes="Bold"/>
             <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">

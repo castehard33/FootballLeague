@@ -15,11 +15,13 @@ namespace FootballLeague.Models
 
         public int IdGoscia { get; set; }
         [ForeignKey("IdGoscia")]
-        public virtual Club? Gosc { get; set; }    
+        public virtual Club? Gosc { get; set; }
 
-        public int IdStadionu { get; set; }
+        public int IdStadionu { get; set; } 
+        [ForeignKey("IdStadionu")]
+        public virtual Stadium? Stadion { get; set; } 
 
-        
+
         public byte? BramkiGospodarza { get; set; }
         public byte? BramkiGoscia { get; set; }
 

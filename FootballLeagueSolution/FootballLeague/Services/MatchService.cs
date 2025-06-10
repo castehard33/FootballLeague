@@ -27,9 +27,10 @@ namespace FootballLeague.Services
         public async Task<List<Match>> GetMatchesAsync()
         {
             return await _context.Mecze
-                                 .Include(m => m.Gospodarz)  // Dołączamy nazwy klubów
+                                 .Include(m => m.Gospodarz)  
                                  .Include(m => m.Gosc)
-                                 .OrderByDescending(m => m.DataMeczu) // Domyślne sortowanie
+                                 .OrderByDescending(m => m.DataMeczu) 
+                                 .Include(m => m.Stadion)
                                  .ToListAsync();
         }
     }

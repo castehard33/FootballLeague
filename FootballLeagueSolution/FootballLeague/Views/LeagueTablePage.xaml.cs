@@ -1,4 +1,3 @@
-// Views/LeagueTablePage.xaml.cs
 using FootballLeague.ViewModels;
 
 namespace FootballLeague.Views

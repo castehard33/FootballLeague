@@ -1,8 +1,7 @@
-﻿// Plik: ViewModels/ViewMatchesViewModel.cs
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using FootballLeague.Models;
-using FootballLeague.Services; // Zakładamy, że MatchService ma metodę GetMatchesAsync
+using FootballLeague.Services;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
@@ -12,33 +11,30 @@ using System.Diagnostics;
 
 namespace FootballLeague.ViewModels
 {
-    public partial class ViewMatchesViewModel : BaseViewModel
+    public partial class ViewMatchesViewModel : BaseViewModel 
     {
         private readonly MatchService _matchService;
-        private readonly ClubService _clubService; // Do pobrania listy klubów dla filtrów
+        private readonly ClubService _clubService;
 
-        // Lista wszystkich meczów pobranych z serwisu
-        private List<Match> _allMatches = new List<Match>();
+        private List<Match> _allMatches = [];
 
-        public ObservableCollection<Match> Matches { get; } = new ObservableCollection<Match>();
-        public ObservableCollection<Club> FilterClubs { get; } = new ObservableCollection<Club>();
-
-        [ObservableProperty]
-        DateTime? _filterDate; // Nullable DateTime dla filtra daty
+        public ObservableCollection<Match> Matches { get; } = [];
+        public ObservableCollection<Club> FilterClubs { get; } = [];
 
         [ObservableProperty]
-        Club? _filterByClub; // Dla filtra po klubie (gospodarz lub gość)
+        DateTime? _filterDate;
 
         [ObservableProperty]
-        bool _isFilterDateEnabled; // Do włączania/wyłączania DatePicker
+        Club? _filterByClub; 
 
+        [ObservableProperty]
+        bool _isFilterDateEnabled; 
         public ViewMatchesViewModel(MatchService matchService, ClubService clubService)
         {
             _matchService = matchService;
             _clubService = clubService;
             Title = "Lista Meczów";
-            // Inicjalnie filtr daty jest wyłączony, żeby pokazać wszystkie mecze
-            IsFilterDateEnabled = false;
+            IsFilterDateEnabled = false; 
         }
 
         public async Task LoadInitialDataAsync()
@@ -47,24 +43,23 @@ namespace FootballLeague.ViewModels
             IsBusy = true;
             try
             {
-                _allMatches = await _matchService.GetMatchesAsync(); // Pobierz WSZYSTKIE mecze
-                ApplyFilters(); // Zastosuj filtry (na początku pokaże wszystkie)
+                _allMatches = await _matchService.GetMatchesAsync();
+                ApplyFilters();
 
-                if (FilterClubs.Count == 0) // Załaduj kluby tylko raz
+                if (FilterClubs.Count == 0)
                 {
                     var clubs = await _clubService.GetClubsAsync();
-                    FilterClubs.Add(new Club { IdKlubu = 0, Nazwa = "Wszystkie Kluby" }); // Opcja "Wszystkie"
+                    FilterClubs.Add(new Club { IdKlubu = 0, Nazwa = "Wszystkie Kluby" });
                     foreach (var club in clubs)
                     {
                         FilterClubs.Add(club);
                     }
-                    // Ustawienie domyślne dla filtra klubów
-                    FilterByClub = FilterClubs.FirstOrDefault();
+                    FilterByClub = FilterClubs.FirstOrDefault(); 
                 }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Błąd podczas ładowania danych meczów: {ex.ToString()}");
+                Debug.WriteLine($"Błąd podczas ładowania danych meczów: {ex}");
                 await Shell.Current.DisplayAlert("Błąd", $"Nie udało się załadować danych: {ex.Message}", "OK");
             }
             finally
@@ -73,12 +68,10 @@ namespace FootballLeague.ViewModels
             }
         }
 
+
         partial void OnFilterDateChanged(DateTime? value)
         {
-            // Jeśli data jest ustawiona, automatycznie włącz filtr daty
-            // Jeśli użytkownik wyczyści datę (co nie jest łatwe w standardowym DatePicker),
-            // można by dodać przycisk "Wyczyść filtr daty"
-            IsFilterDateEnabled = value.HasValue;
+            IsFilterDateEnabled = value.HasValue; 
             ApplyFilters();
         }
 
@@ -87,23 +80,20 @@ namespace FootballLeague.ViewModels
             ApplyFilters();
         }
 
-        // Użyj tego, jeśli chcesz mieć checkbox do włączania/wyłączania filtra daty
-        // partial void OnIsFilterDateEnabledChanged(bool value)
-        // {
-        //     if (!value) // Jeśli filtr daty jest wyłączony
-        //     {
-        //         FilterDate = null; // Zresetuj datę, co wywoła OnFilterDateChanged i odświeży
-        //     }
-        //     ApplyFilters();
-        // }
-
-
-        [RelayCommand]
-        void ClearDateFilter() // Przycisk do czyszczenia filtra daty
+        partial void OnIsFilterDateEnabledChanged(bool value)
         {
-            FilterDate = null; // To wywoła OnFilterDateChanged -> IsFilterDateEnabled = false -> ApplyFilters
+            if (!value)
+            {
+                FilterDate = null; 
+            }
+            ApplyFilters();
         }
 
+        [RelayCommand]
+        void ClearDateFilter()
+        {
+            FilterDate = null; 
+        }
 
         private void ApplyFilters()
         {
@@ -111,18 +101,19 @@ namespace FootballLeague.ViewModels
 
             IEnumerable<Match> filtered = _allMatches;
 
+
             if (IsFilterDateEnabled && FilterDate.HasValue)
             {
                 filtered = filtered.Where(m => m.DataMeczu.Date == FilterDate.Value.Date);
             }
 
-            if (FilterByClub != null && FilterByClub.IdKlubu != 0) // 0 to ID dla "Wszystkie Kluby"
+            if (FilterByClub != null && FilterByClub.IdKlubu != 0)
             {
                 filtered = filtered.Where(m => m.IdGospodarza == FilterByClub.IdKlubu || m.IdGoscia == FilterByClub.IdKlubu);
             }
 
             Matches.Clear();
-            foreach (var match in filtered.OrderByDescending(m => m.DataMeczu)) // Sortuj od najnowszych
+            foreach (var match in filtered.OrderByDescending(m => m.DataMeczu))
             {
                 Matches.Add(match);
             }
@@ -130,7 +121,14 @@ namespace FootballLeague.ViewModels
 
         public async Task OnAppearing()
         {
-            await LoadInitialDataAsync();
+            if (_allMatches.Count == 0 || FilterClubs.Count <= 1)
+            {
+                await LoadInitialDataAsync();
+            }
+            else if (!IsBusy)
+            {
+                ApplyFilters();
+            }
         }
     }
 }

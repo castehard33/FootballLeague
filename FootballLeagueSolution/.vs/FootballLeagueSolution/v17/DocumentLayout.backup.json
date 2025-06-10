@@ -3,33 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\models\\match.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\models\\match.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\bmedr\\.nuget\\packages\\microsoft.maui.controls.build.tasks\\9.0.14\\buildTransitive\\netstandard2.0\\Microsoft.Maui.Controls.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\views\\viewmatchespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\views\\viewmatchespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\views\\viewmatchespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\views\\viewmatchespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\views\\addmatchpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\views\\addmatchpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
@@ -38,16 +11,24 @@
       "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\viewmodels\\viewmatchesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\services\\matchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\services\\matchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\models\\club.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\models\\club.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\viewmodels\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\viewmodels\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\viewmodels\\addmatchviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\viewmodels\\addmatchviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\converters\\itemindexconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\converters\\itemindexconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\views\\leaguetablepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\views\\leaguetablepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -61,28 +42,15 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\App.xaml",
-              "RelativeDocumentMoniker": "FootballLeague\\App.xaml",
-              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\App.xaml",
-              "RelativeToolTip": "FootballLeague\\App.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-30T20:27:48.299Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Microsoft.Maui.Controls.targets",
-              "DocumentMoniker": "C:\\Users\\bmedr\\.nuget\\packages\\microsoft.maui.controls.build.tasks\\9.0.14\\buildTransitive\\netstandard2.0\\Microsoft.Maui.Controls.targets",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\.nuget\\packages\\microsoft.maui.controls.build.tasks\\9.0.14\\buildTransitive\\netstandard2.0\\Microsoft.Maui.Controls.targets",
-              "ToolTip": "C:\\Users\\bmedr\\.nuget\\packages\\microsoft.maui.controls.build.tasks\\9.0.14\\buildTransitive\\netstandard2.0\\Microsoft.Maui.Controls.targets",
-              "RelativeToolTip": "..\\..\\..\\..\\.nuget\\packages\\microsoft.maui.controls.build.tasks\\9.0.14\\buildTransitive\\netstandard2.0\\Microsoft.Maui.Controls.targets",
-              "ViewState": "AgIAAJsAAAAAAAAAAAAwwKoAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2025-05-30T20:26:26.979Z",
+              "DocumentIndex": 2,
+              "Title": "BaseViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\BaseViewModel.cs",
+              "RelativeDocumentMoniker": "FootballLeague\\ViewModels\\BaseViewModel.cs",
+              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\BaseViewModel.cs",
+              "RelativeToolTip": "FootballLeague\\ViewModels\\BaseViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T22:13:00.949Z",
               "EditorCaption": ""
             },
             {
@@ -93,122 +61,75 @@
               "RelativeDocumentMoniker": "FootballLeague\\MauiProgram.cs",
               "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\MauiProgram.cs",
               "RelativeToolTip": "FootballLeague\\MauiProgram.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAQwDkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAEwDcAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T09:04:27Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ViewMatchesPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Views\\ViewMatchesPage.xaml.cs",
-              "RelativeDocumentMoniker": "FootballLeague\\Views\\ViewMatchesPage.xaml.cs",
-              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Views\\ViewMatchesPage.xaml.cs",
-              "RelativeToolTip": "FootballLeague\\Views\\ViewMatchesPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAowA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T09:03:49.335Z",
+              "WhenOpened": "2025-06-10T22:08:33.448Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AppShell.xaml",
-              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\AppShell.xaml",
-              "RelativeDocumentMoniker": "FootballLeague\\AppShell.xaml",
-              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\AppShell.xaml*",
-              "RelativeToolTip": "FootballLeague\\AppShell.xaml*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-30T09:05:34.797Z",
+              "DocumentIndex": 4,
+              "Title": "ItemIndexConverter.cs",
+              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Converters\\ItemIndexConverter.cs",
+              "RelativeDocumentMoniker": "FootballLeague\\Converters\\ItemIndexConverter.cs",
+              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Converters\\ItemIndexConverter.cs",
+              "RelativeToolTip": "FootballLeague\\Converters\\ItemIndexConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T22:06:52.603Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "ViewMatchesPage.xaml",
-              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Views\\ViewMatchesPage.xaml",
-              "RelativeDocumentMoniker": "FootballLeague\\Views\\ViewMatchesPage.xaml",
-              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Views\\ViewMatchesPage.xaml",
-              "RelativeToolTip": "FootballLeague\\Views\\ViewMatchesPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAVAAAAAAAAAA==",
+              "Title": "LeagueTablePage.xaml",
+              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Views\\LeagueTablePage.xaml",
+              "RelativeDocumentMoniker": "FootballLeague\\Views\\LeagueTablePage.xaml",
+              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Views\\LeagueTablePage.xaml",
+              "RelativeToolTip": "FootballLeague\\Views\\LeagueTablePage.xaml",
+              "ViewState": "AgIAACsAAAAAAAAAAAAjwD4AAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-30T09:02:14.375Z",
+              "WhenOpened": "2025-06-10T19:12:29.692Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Club.cs",
-              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Models\\Club.cs",
-              "RelativeDocumentMoniker": "FootballLeague\\Models\\Club.cs",
-              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Models\\Club.cs",
-              "RelativeToolTip": "FootballLeague\\Models\\Club.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T08:59:57.255Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Match.cs",
-              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Models\\Match.cs",
-              "RelativeDocumentMoniker": "FootballLeague\\Models\\Match.cs",
-              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Models\\Match.cs",
-              "RelativeToolTip": "FootballLeague\\Models\\Match.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAgwBUAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T08:58:32.513Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "MatchService.cs",
-              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Services\\MatchService.cs",
-              "RelativeDocumentMoniker": "FootballLeague\\Services\\MatchService.cs",
-              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Services\\MatchService.cs",
-              "RelativeToolTip": "FootballLeague\\Services\\MatchService.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T08:57:41.368Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ViewMatchesViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\ViewMatchesViewModel.cs",
-              "RelativeDocumentMoniker": "FootballLeague\\ViewModels\\ViewMatchesViewModel.cs",
-              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\ViewMatchesViewModel.cs",
-              "RelativeToolTip": "FootballLeague\\ViewModels\\ViewMatchesViewModel.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAkwIcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T08:56:56.353Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "AddMatchPage.xaml",
               "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Views\\AddMatchPage.xaml",
               "RelativeDocumentMoniker": "FootballLeague\\Views\\AddMatchPage.xaml",
               "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Views\\AddMatchPage.xaml",
               "RelativeToolTip": "FootballLeague\\Views\\AddMatchPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-28T13:18:34.062Z",
+              "WhenOpened": "2025-06-10T18:50:16.165Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 1,
+              "Title": "ViewMatchesViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\ViewMatchesViewModel.cs",
+              "RelativeDocumentMoniker": "FootballLeague\\ViewModels\\ViewMatchesViewModel.cs",
+              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\ViewMatchesViewModel.cs",
+              "RelativeToolTip": "FootballLeague\\ViewModels\\ViewMatchesViewModel.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAEwBgAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T18:14:11.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "AddMatchViewModel.cs",
               "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\AddMatchViewModel.cs",
               "RelativeDocumentMoniker": "FootballLeague\\ViewModels\\AddMatchViewModel.cs",
-              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\AddMatchViewModel.cs",
-              "RelativeToolTip": "FootballLeague\\ViewModels\\AddMatchViewModel.cs",
-              "ViewState": "AgIAAGoAAAAAAAAAAAAkwHgAAAA4AAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\AddMatchViewModel.cs*",
+              "RelativeToolTip": "FootballLeague\\ViewModels\\AddMatchViewModel.cs*",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAawBgAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T13:17:05.283Z"
+              "WhenOpened": "2025-05-28T13:17:05.283Z",
+              "EditorCaption": ""
             }
           ]
         }

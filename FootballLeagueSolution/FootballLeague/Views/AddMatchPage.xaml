@@ -2,7 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FootballLeague.Views.AddMatchPage"
              xmlns:vm="clr-namespace:FootballLeague.ViewModels"
-             xmlns:model="clr-namespace:FootballLeague.Models" 
              x:DataType="vm:AddMatchViewModel"
              Title="{Binding Title}">
     <ScrollView>
@@ -19,8 +18,12 @@
                     SelectedItem="{Binding SelectedAwayTeam}"
                     Title="Wybierz gościa" />
 
+
             <Label Text="Data Meczu:" />
-            <DatePicker Date="{Binding MatchDate}" />
+            <DatePicker Date="{Binding MatchDatePart}" />
+
+            <Label Text="Godzina Meczu:" />
+            <TimePicker Time="{Binding MatchTimePart}" />
 
             <Label Text="Wynik Gospodarzy (opcjonalnie):" />
             <Entry Text="{Binding HomeScore}" Placeholder="0" Keyboard="Numeric" MaxLength="2" />

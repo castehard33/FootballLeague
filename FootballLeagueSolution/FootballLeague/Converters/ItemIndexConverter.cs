@@ -7,7 +7,7 @@ namespace FootballLeague.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null || parameter == null || !(parameter is IEnumerable itemsSource))
+            if (value == null || parameter == null || parameter is not IEnumerable itemsSource)
                 return 0;
 
             var item = value;

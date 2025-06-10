@@ -1,4 +1,3 @@
-// Plik: Views/ViewMatchesPage.xaml.cs
 using FootballLeague.ViewModels;
 
 namespace FootballLeague.Views

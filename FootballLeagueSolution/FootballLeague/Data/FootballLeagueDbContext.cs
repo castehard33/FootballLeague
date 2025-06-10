@@ -8,7 +8,7 @@ namespace FootballLeague.Data
     {
         public DbSet<Club> Kluby { get; set; }
         public DbSet<Match> Mecze { get; set; }
-
+        public DbSet<Stadium> Stadiony { get; set; }
         public FootballLeagueDbContext(DbContextOptions<FootballLeagueDbContext> options) : base(options)
         {
         }
