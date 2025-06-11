@@ -18,26 +18,24 @@
                     SelectedItem="{Binding SelectedPosition}"
                     Title="Wybierz pozycję" />
 
-            <!-- Sekcja wyboru klubu tylko przy dodawaniu nowego zawodnika -->
-            <Label Text="Początkowy Klub (opcjonalnie):" IsVisible="{Binding PlayerId, Converter={StaticResource IntToInverseBoolConverter}}" />
+
+
+            <Label Text="Klub:" />
             <Picker ItemsSource="{Binding AvailableClubs}"
                     ItemDisplayBinding="{Binding Nazwa}"
                     SelectedItem="{Binding SelectedInitialClub}"
-                    Title="Wybierz klub"
-                    IsVisible="{Binding PlayerId, Converter={StaticResource IntToInverseBoolConverter}}" />
+                    Title="Wybierz klub" />
 
             <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" HorizontalOptions="Center"/>
 
             <Button Text="Zapisz" Command="{Binding SavePlayerCommand}" Margin="0,20,0,0"/>
             <Button Text="Usuń" Command="{Binding DeletePlayerCommand}" IsVisible="{Binding PlayerId, Converter={StaticResource IntToBoolConverter}}" BackgroundColor="Red" TextColor="White" Margin="0,5,0,0"/>
-            <!-- Możesz dodać przycisk Anuluj jeśli potrzebny -->
+
         </VerticalStackLayout>
     </ScrollView>
     <ContentPage.Resources>
         <ResourceDictionary>
-            <!-- Załóżmy, że te konwertery już masz -->
-            <!-- <converters:IntToBoolConverter x:Key="IntToBoolConverter" /> -->
-            <!-- <converters:IntToInverseBoolConverter x:Key="IntToInverseBoolConverter" /> -->
+
         </ResourceDictionary>
     </ContentPage.Resources>
 </ContentPage>

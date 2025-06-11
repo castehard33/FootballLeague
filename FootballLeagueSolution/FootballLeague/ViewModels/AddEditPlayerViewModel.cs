@@ -3,10 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using FootballLeague.Models;
 using FootballLeague.Services;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using Microsoft.Maui.Controls;
-using System;
-using System.Linq; // Dla FirstOrDefault
 using System.Diagnostics;
 
 namespace FootballLeague.ViewModels
@@ -16,10 +12,10 @@ namespace FootballLeague.ViewModels
     {
         private readonly PlayerService _playerService;
         private readonly PositionService _positionService;
-        private readonly ClubService _clubService; // Do wyboru początkowego klubu
+        private readonly ClubService _clubService;
 
         public ObservableCollection<Position> AvailablePositions { get; } = new();
-        public ObservableCollection<Club> AvailableClubs { get; } = new(); // Dla początkowego klubu
+        public ObservableCollection<Club> AvailableClubs { get; } = new();
 
         private int _playerId;
         public int PlayerId
@@ -42,9 +38,10 @@ namespace FootballLeague.ViewModels
         Position? _selectedPosition;
 
         [ObservableProperty]
-        Club? _selectedInitialClub; // Dla klubu, do którego zawodnik jest dodawany
+        Club? _selectedInitialClub;
 
         private bool _isEditing = false;
+        private Player? _originalPlayer;
 
         public AddEditPlayerViewModel(PlayerService playerService, PositionService positionService, ClubService clubService)
         {
@@ -68,7 +65,7 @@ namespace FootballLeague.ViewModels
                 if (AvailableClubs.Count == 0)
                 {
                     var clubs = await _clubService.GetClubsAsync();
-                    AvailableClubs.Add(new Club { IdKlubu = 0, Nazwa = "Brak klubu (wolny agent)" }); // Opcja braku klubu
+                    AvailableClubs.Add(new Club { IdKlubu = 0, Nazwa = "Brak klubu (wolny agent)" });
                     foreach (var club in clubs) AvailableClubs.Add(club);
                 }
             }
@@ -80,39 +77,33 @@ namespace FootballLeague.ViewModels
             finally { IsBusy = false; }
         }
 
-
         private async void LoadPlayerAsync(int playerId)
         {
-            await LoadInitialDataAsync(); // Upewnij się, że pozycje i kluby są załadowane
+            await LoadInitialDataAsync();
 
-            if (playerId == 0) // Dodawanie nowego
+            if (playerId == 0)
             {
                 Title = "Dodaj Zawodnika";
+                _originalPlayer = new Player();
                 Imie = string.Empty;
                 Nazwisko = string.Empty;
                 SelectedPosition = AvailablePositions.FirstOrDefault();
-                SelectedInitialClub = AvailableClubs.FirstOrDefault(c => c.IdKlubu == 0); // Domyślnie "Brak klubu"
+                SelectedInitialClub = AvailableClubs.FirstOrDefault(c => c.IdKlubu == 0);
                 _isEditing = false;
             }
-            else // Edycja istniejącego
+            else
             {
                 Title = "Edytuj Zawodnika";
-                var player = await _playerService.GetPlayerByIdAsync(playerId);
-                if (player != null)
+                _originalPlayer = await _playerService.GetPlayerByIdAsync(playerId);
+                if (_originalPlayer != null)
                 {
-                    Imie = player.Imie;
-                    Nazwisko = player.Nazwisko;
-                    SelectedPosition = AvailablePositions.FirstOrDefault(p => p.IDpozycji == player.IDpozycji);
-                    // Aktualny klub jest ładowany przez PlayerService, ale nie ma tu bezpośredniej edycji klubu
-                    // (to będzie przez transfery). Możemy go wyświetlić, ale nie jako SelectedInitialClub.
-                    // SelectedInitialClub pozostaje do wyboru klubu przy tworzeniu nowego zawodnika.
-                    // Dla edycji, pole wyboru klubu początkowego może być ukryte lub nieaktywne.
-                    SelectedInitialClub = player.AktualnyKlub ?? AvailableClubs.FirstOrDefault(c => c.IdKlubu == 0);
-
+                    Imie = _originalPlayer.Imie;
+                    Nazwisko = _originalPlayer.Nazwisko;
+                    SelectedPosition = AvailablePositions.FirstOrDefault(p => p.IDpozycji == _originalPlayer.IDpozycji);
+                    SelectedInitialClub = _originalPlayer.AktualnyKlub ?? AvailableClubs.FirstOrDefault(c => c.IdKlubu == 0);
                 }
                 _isEditing = true;
             }
-            // Odśwież CanExecute dla komend, jeśli takie masz
         }
 
         [RelayCommand]
@@ -124,9 +115,9 @@ namespace FootballLeague.ViewModels
                 return;
             }
 
-            Player player = new Player
+            Player playerToSave = new Player
             {
-                IDzawodnika = _playerId, // Będzie 0 dla nowego
+                IDzawodnika = _playerId,
                 Imie = Imie,
                 Nazwisko = Nazwisko,
                 IDpozycji = SelectedPosition.IDpozycji
@@ -137,15 +128,23 @@ namespace FootballLeague.ViewModels
             {
                 if (_isEditing)
                 {
-                    await _playerService.UpdatePlayerAsync(player);
+                    await _playerService.UpdatePlayerAsync(playerToSave);
+
+                    bool wantsToBeFreeAgent = SelectedInitialClub != null && SelectedInitialClub.IdKlubu == 0;
+                    bool hadClubBefore = _originalPlayer?.AktualnyKlub != null;
+
+                    if (wantsToBeFreeAgent && hadClubBefore)
+                    {
+                        await _playerService.ReleasePlayerFromCurrentClubAsync(_playerId, DateTime.Today);
+                    }
                 }
                 else
                 {
                     int? initialClubId = (SelectedInitialClub != null && SelectedInitialClub.IdKlubu != 0) ? SelectedInitialClub.IdKlubu : (int?)null;
-                    await _playerService.AddPlayerAsync(player, initialClubId);
+                    await _playerService.AddPlayerAsync(playerToSave, initialClubId);
                 }
+
                 await Shell.Current.DisplayAlert("Sukces", _isEditing ? "Zawodnik zaktualizowany!" : "Zawodnik dodany!", "OK");
-                // Powiadom listę o zmianie
                 MessagingCenter.Send(this, "PlayersChanged");
                 await Shell.Current.GoToAsync("..");
             }
@@ -184,14 +183,18 @@ namespace FootballLeague.ViewModels
 
         public async Task OnAppearing()
         {
-            // Jeśli nie jesteśmy w trybie edycji (playerId == 0), to jest dodawanie nowego, załaduj dane
-            // Jeśli edytujemy, LoadPlayerAsync już wywoła LoadInitialDataAsync
-            if (_playerId == 0 && (AvailablePositions.Count == 0 || AvailableClubs.Count == 0) && !IsBusy)
+            if (_playerId == 0 && (AvailablePositions.Count == 0 || AvailableClubs.Count <= 1) && !IsBusy)
             {
                 await LoadInitialDataAsync();
-                // Ustawienie domyślnych wartości dla nowego zawodnika po załadowaniu danych
-                SelectedPosition = AvailablePositions.FirstOrDefault();
-                SelectedInitialClub = AvailableClubs.FirstOrDefault(c => c.IdKlubu == 0);
+                if (_playerId == 0)
+                {
+                    SelectedPosition = AvailablePositions.FirstOrDefault();
+                    SelectedInitialClub = AvailableClubs.FirstOrDefault(c => c.IdKlubu == 0);
+                }
+            }
+            else if (_playerId != 0 && _originalPlayer == null && !IsBusy)
+            {
+                LoadPlayerAsync(_playerId);
             }
         }
     }

@@ -1,6 +1,10 @@
 ﻿using FootballLeague.Data;
 using FootballLeague.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System;
 
 namespace FootballLeague.Services
 {
@@ -21,7 +25,7 @@ namespace FootballLeague.Services
 
             var activeTransfers = await _context.Transfery
                                               .Where(t => playerIds.Contains(t.IDzawodnika) && t.DataOdejscia == null)
-                                              .Include(t => t.Klub) //  dane klubu z transferu
+                                              .Include(t => t.Klub) // dane klubu z transferu
                                               .OrderByDescending(t => t.DataDolaczenia)
                                               .ToListAsync();
 
@@ -35,19 +39,13 @@ namespace FootballLeague.Services
             // znajdź aktualny klub zawodnika
             foreach (var player in players)
             {
-                // Dla każdego zawodnika wykonaj osobne zapytanie
-                var currentTransfer = await _context.Transfery
-                                                   .Where(t => t.IDzawodnika == player.IDzawodnika && t.DataOdejscia == null)
-                                                   .OrderByDescending(t => t.DataDolaczenia) // Weź najnowszy aktywny transfer
-                                                   .Include(t => t.Klub) // KLUCZOWE: Załaduj dane Klubu powiązanego z tym transferem
-                                                   .FirstOrDefaultAsync();
-                if (currentTransfer != null)
+                if (latestActiveTransfersByPlayerId.TryGetValue(player.IDzawodnika, out var currentTransfer))
                 {
-                    player.AktualnyKlub = currentTransfer.Klub; 
+                    player.AktualnyKlub = currentTransfer.Klub;
                 }
                 else
                 {
-                    player.AktualnyKlub = null; 
+                    player.AktualnyKlub = null;
                 }
             }
             return players;
@@ -110,6 +108,29 @@ namespace FootballLeague.Services
             await _context.SaveChangesAsync();
         }
 
+        public async Task ReleasePlayerFromCurrentClubAsync(int playerId, DateTime releaseDate)
+        {
+            var activeTransfers = await _context.Transfery
+                                              .Where(t => t.IDzawodnika == playerId && t.DataOdejscia == null)
+                                              .ToListAsync();
+
+            if (activeTransfers.Any())
+            {
+                foreach (var transfer in activeTransfers)
+                {
+                    if (transfer.DataDolaczenia > releaseDate)
+                    {
+                        transfer.DataOdejscia = releaseDate;
+                    }
+                    else
+                    {
+                        transfer.DataOdejscia = releaseDate;
+                    }
+                }
+                await _context.SaveChangesAsync();
+            }
+        }
+
         public async Task DeletePlayerAsync(int playerId)
         {
             var player = await _context.Zawodnicy.FindAsync(playerId);
@@ -119,5 +140,9 @@ namespace FootballLeague.Services
                 await _context.SaveChangesAsync();
             }
         }
+
+
+
+
     }
 }
