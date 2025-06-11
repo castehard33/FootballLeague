@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations; // Dla atrybutów jak [Key] jeśli potrzebne, choć EF Core często wykrywa PK przez konwencję
+﻿using System.ComponentModel.DataAnnotations; 
 
 namespace FootballLeague.Models
 {

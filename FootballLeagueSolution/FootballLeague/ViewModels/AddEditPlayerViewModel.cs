@@ -42,6 +42,7 @@ namespace FootballLeague.ViewModels
 
         private bool _isEditing = false;
         private Player? _originalPlayer;
+        private Club? _clubBeforeEdit;
 
         public AddEditPlayerViewModel(PlayerService playerService, PositionService positionService, ClubService clubService)
         {
@@ -64,6 +65,7 @@ namespace FootballLeague.ViewModels
                 }
                 if (AvailableClubs.Count == 0)
                 {
+                    AvailableClubs.Clear();
                     var clubs = await _clubService.GetClubsAsync();
                     AvailableClubs.Add(new Club { IdKlubu = 0, Nazwa = "Brak klubu (wolny agent)" });
                     foreach (var club in clubs) AvailableClubs.Add(club);
@@ -77,6 +79,7 @@ namespace FootballLeague.ViewModels
             finally { IsBusy = false; }
         }
 
+
         private async void LoadPlayerAsync(int playerId)
         {
             await LoadInitialDataAsync();
@@ -89,6 +92,7 @@ namespace FootballLeague.ViewModels
                 Nazwisko = string.Empty;
                 SelectedPosition = AvailablePositions.FirstOrDefault();
                 SelectedInitialClub = AvailableClubs.FirstOrDefault(c => c.IdKlubu == 0);
+                _clubBeforeEdit = null;
                 _isEditing = false;
             }
             else
@@ -101,6 +105,7 @@ namespace FootballLeague.ViewModels
                     Nazwisko = _originalPlayer.Nazwisko;
                     SelectedPosition = AvailablePositions.FirstOrDefault(p => p.IDpozycji == _originalPlayer.IDpozycji);
                     SelectedInitialClub = _originalPlayer.AktualnyKlub ?? AvailableClubs.FirstOrDefault(c => c.IdKlubu == 0);
+                    _clubBeforeEdit = _originalPlayer.AktualnyKlub;
                 }
                 _isEditing = true;
             }
@@ -130,12 +135,19 @@ namespace FootballLeague.ViewModels
                 {
                     await _playerService.UpdatePlayerAsync(playerToSave);
 
-                    bool wantsToBeFreeAgent = SelectedInitialClub != null && SelectedInitialClub.IdKlubu == 0;
-                    bool hadClubBefore = _originalPlayer?.AktualnyKlub != null;
+                    int? newClubId = SelectedInitialClub?.IdKlubu;
+                    int? oldClubId = _clubBeforeEdit?.IdKlubu;
 
-                    if (wantsToBeFreeAgent && hadClubBefore)
+                    if (newClubId == 0)
                     {
-                        await _playerService.ReleasePlayerFromCurrentClubAsync(_playerId, DateTime.Today);
+                        if (oldClubId.HasValue && oldClubId.Value != 0)
+                        {
+                            await _playerService.ReleasePlayerFromCurrentClubAsync(_playerId, DateTime.Today);
+                        }
+                    }
+                    else if (newClubId.HasValue && newClubId != oldClubId)
+                    {
+                        await _playerService.AssignPlayerToClubAsync(_playerId, newClubId.Value, DateTime.Today);
                     }
                 }
                 else
@@ -183,16 +195,19 @@ namespace FootballLeague.ViewModels
 
         public async Task OnAppearing()
         {
-            if (_playerId == 0 && (AvailablePositions.Count == 0 || AvailableClubs.Count <= 1) && !IsBusy)
+            if (_playerId == 0)
             {
-                await LoadInitialDataAsync();
-                if (_playerId == 0)
+                if ((AvailablePositions.Count == 0 || AvailableClubs.Count <= 1) && !IsBusy)
                 {
-                    SelectedPosition = AvailablePositions.FirstOrDefault();
-                    SelectedInitialClub = AvailableClubs.FirstOrDefault(c => c.IdKlubu == 0);
+                    await LoadInitialDataAsync();
+                    if (_playerId == 0)
+                    {
+                        SelectedPosition = AvailablePositions.FirstOrDefault();
+                        SelectedInitialClub = AvailableClubs.FirstOrDefault(c => c.IdKlubu == 0);
+                    }
                 }
             }
-            else if (_playerId != 0 && _originalPlayer == null && !IsBusy)
+            else if (_originalPlayer == null && !IsBusy)
             {
                 LoadPlayerAsync(_playerId);
             }

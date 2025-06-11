@@ -118,17 +118,48 @@ namespace FootballLeague.Services
             {
                 foreach (var transfer in activeTransfers)
                 {
-                    if (transfer.DataDolaczenia > releaseDate)
-                    {
-                        transfer.DataOdejscia = releaseDate;
-                    }
-                    else
-                    {
-                        transfer.DataOdejscia = releaseDate;
-                    }
+                    transfer.DataOdejscia = releaseDate;
                 }
                 await _context.SaveChangesAsync();
             }
+        }
+
+        public async Task AssignPlayerToClubAsync(int playerId, int clubId, DateTime joinDate)
+        {
+
+            var activeTransfers = await _context.Transfery
+                                              .Where(t => t.IDzawodnika == playerId && t.DataOdejscia == null)
+                                              .ToListAsync();
+            foreach (var activeTransfer in activeTransfers)
+            {
+
+                if (joinDate < activeTransfer.DataDolaczenia)
+                {
+
+                    activeTransfer.DataOdejscia = joinDate.AddDays(-1) < activeTransfer.DataDolaczenia ? activeTransfer.DataDolaczenia : joinDate.AddDays(-1);
+                }
+                else
+                {
+                    activeTransfer.DataOdejscia = joinDate.AddDays(-1); 
+                }
+            }
+
+            if (activeTransfers.Any())
+            {
+                await _context.SaveChangesAsync();
+            }
+
+
+
+            var newTransfer = new Transfer
+            {
+                IDzawodnika = playerId,
+                IDklubu = clubId,
+                DataDolaczenia = joinDate,
+                DataOdejscia = null
+            };
+            _context.Transfery.Add(newTransfer);
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeletePlayerAsync(int playerId)
