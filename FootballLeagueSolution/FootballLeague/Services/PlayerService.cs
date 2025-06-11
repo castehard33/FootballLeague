@@ -2,7 +2,6 @@
 using FootballLeague.Models;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace FootballLeague.Services
 {
     public class PlayerService
@@ -18,17 +17,37 @@ namespace FootballLeague.Services
                                       .OrderBy(p => p.Nazwisko).ThenBy(p => p.Imie)
                                       .ToListAsync();
 
+            var playerIds = players.Select(p => p.IDzawodnika).ToList();
+
+            var activeTransfers = await _context.Transfery
+                                              .Where(t => playerIds.Contains(t.IDzawodnika) && t.DataOdejscia == null)
+                                              .Include(t => t.Klub) //  dane klubu z transferu
+                                              .OrderByDescending(t => t.DataDolaczenia)
+                                              .ToListAsync();
+
+            var latestActiveTransfersByPlayerId = activeTransfers
+                                                .GroupBy(t => t.IDzawodnika)
+                                                .ToDictionary(
+                                                    g => g.Key,
+                                                    g => g.First()
+                                                );
+
             // znajdź aktualny klub zawodnika
             foreach (var player in players)
             {
+                // Dla każdego zawodnika wykonaj osobne zapytanie
                 var currentTransfer = await _context.Transfery
                                                    .Where(t => t.IDzawodnika == player.IDzawodnika && t.DataOdejscia == null)
-                                                   .Include(t => t.Klub) //  dane klubu z transferu
-                                                   .OrderByDescending(t => t.DataDolaczenia)
+                                                   .OrderByDescending(t => t.DataDolaczenia) // Weź najnowszy aktywny transfer
+                                                   .Include(t => t.Klub) // KLUCZOWE: Załaduj dane Klubu powiązanego z tym transferem
                                                    .FirstOrDefaultAsync();
                 if (currentTransfer != null)
                 {
-                    player.AktualnyKlub = currentTransfer.Klub;
+                    player.AktualnyKlub = currentTransfer.Klub; 
+                }
+                else
+                {
+                    player.AktualnyKlub = null; 
                 }
             }
             return players;
@@ -51,6 +70,10 @@ namespace FootballLeague.Services
                 {
                     player.AktualnyKlub = currentTransfer.Klub;
                 }
+                else
+                {
+                    player.AktualnyKlub = null;
+                }
             }
             return player;
         }
@@ -59,16 +82,16 @@ namespace FootballLeague.Services
         {
             // dodaj zawodnika, aby uzyskać ID
             _context.Zawodnicy.Add(player);
-            await _context.SaveChangesAsync(); 
+            await _context.SaveChangesAsync();
 
 
-            if (initialClubId.HasValue && initialClubId.Value != 0) 
+            if (initialClubId.HasValue && initialClubId.Value != 0)
             {
                 var initialTransfer = new Transfer
                 {
                     IDzawodnika = player.IDzawodnika,
                     IDklubu = initialClubId.Value,
-                    DataDolaczenia = DateTime.Today, 
+                    DataDolaczenia = DateTime.Today,
                     DataOdejscia = null
                 };
                 _context.Transfery.Add(initialTransfer);
@@ -78,8 +101,12 @@ namespace FootballLeague.Services
 
         public async Task UpdatePlayerAsync(Player player)
         {
-            _context.Entry(player).State = EntityState.Modified;
-
+            var existingPlayer = _context.Zawodnicy.Local.FirstOrDefault(p => p.IDzawodnika == player.IDzawodnika);
+            if (existingPlayer != null)
+            {
+                _context.Entry(existingPlayer).State = EntityState.Detached;
+            }
+            _context.Zawodnicy.Update(player);
             await _context.SaveChangesAsync();
         }
 
@@ -88,7 +115,6 @@ namespace FootballLeague.Services
             var player = await _context.Zawodnicy.FindAsync(playerId);
             if (player != null)
             {
-                
                 _context.Zawodnicy.Remove(player);
                 await _context.SaveChangesAsync();
             }

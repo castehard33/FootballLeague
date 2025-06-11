@@ -1,12 +1,9 @@
-﻿// Plik: ViewModels/AddMatchViewModel.cs
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using FootballLeague.Models;
 using FootballLeague.Services;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using Microsoft.Maui.Controls;
-using System;
+
 using System.Diagnostics;
 
 namespace FootballLeague.ViewModels
