@@ -1,4 +1,4 @@
-﻿// AppShell.xaml.cs
+﻿using FootballLeague.Views; 
 namespace FootballLeague
 {
     public partial class AppShell : Shell
@@ -6,6 +6,10 @@ namespace FootballLeague
         public AppShell()
         {
             InitializeComponent();
+
+
+            Routing.RegisterRoute(nameof(AddEditPlayerPage), typeof(AddEditPlayerPage));
+
         }
     }
 }

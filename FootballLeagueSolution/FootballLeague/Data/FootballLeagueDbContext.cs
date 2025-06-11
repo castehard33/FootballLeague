@@ -9,6 +9,9 @@ namespace FootballLeague.Data
         public DbSet<Club> Kluby { get; set; }
         public DbSet<Match> Mecze { get; set; }
         public DbSet<Stadium> Stadiony { get; set; }
+        public DbSet<Player> Zawodnicy { get; set; }
+        public DbSet<Position> Pozycje { get; set; }
+        public DbSet<Transfer> Transfery { get; set; }
         public FootballLeagueDbContext(DbContextOptions<FootballLeagueDbContext> options) : base(options)
         {
         }
@@ -36,6 +39,37 @@ namespace FootballLeague.Data
                 .HasOne(m => m.Gosc)
                 .WithMany()
                 .HasForeignKey(m => m.IdGoscia)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<Stadium>().ToTable("Stadiony").HasKey(s => s.IDstadionu);
+
+            modelBuilder.Entity<Position>().ToTable("Pozycje").HasKey(p => p.IDpozycji);
+            modelBuilder.Entity<Position>().Property(p => p.IDpozycji).ValueGeneratedOnAdd(); 
+            modelBuilder.Entity<Position>().HasIndex(p => p.NazwaPozycji).IsUnique(); 
+
+
+
+            modelBuilder.Entity<Player>().ToTable("Zawodnicy").HasKey(p => p.IDzawodnika);
+            modelBuilder.Entity<Player>().Property(p => p.IDzawodnika).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Player>()
+                .HasOne(p => p.Pozycja)
+                .WithMany() 
+                .HasForeignKey(p => p.IDpozycji)
+                .OnDelete(DeleteBehavior.Restrict); 
+
+
+            modelBuilder.Entity<Transfer>().ToTable("Transfery").HasKey(t => t.IDtransferu);
+            modelBuilder.Entity<Transfer>().Property(t => t.IDtransferu).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Transfer>()
+                .HasOne(t => t.Zawodnik)
+                .WithMany() 
+                .HasForeignKey(t => t.IDzawodnika)
+                .OnDelete(DeleteBehavior.Cascade); 
+            modelBuilder.Entity<Transfer>()
+                .HasOne(t => t.Klub)
+                .WithMany() 
+                .HasForeignKey(t => t.IDklubu)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

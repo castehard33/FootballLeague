@@ -1,4 +1,3 @@
-<!-- AppShell.xaml -->
 <Shell
     x:Class="FootballLeague.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -19,5 +18,9 @@
             Title="Lista Meczow"
             ContentTemplate="{DataTemplate views:ViewMatchesPage}"
             Route="ViewMatchesPage" />
+        <ShellContent
+            Title="Zawodnicy"
+            ContentTemplate="{DataTemplate views:PlayerListPage}"
+            Route="PlayerListPage" />
     </FlyoutItem>
 </Shell>

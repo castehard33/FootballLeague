@@ -1,0 +1,97 @@
+﻿using FootballLeague.Data;
+using FootballLeague.Models;
+using Microsoft.EntityFrameworkCore;
+
+
+namespace FootballLeague.Services
+{
+    public class PlayerService
+    {
+        private readonly FootballLeagueDbContext _context;
+
+        public PlayerService(FootballLeagueDbContext context) => _context = context;
+
+        public async Task<List<Player>> GetPlayersAsync()
+        {
+            var players = await _context.Zawodnicy
+                                      .Include(p => p.Pozycja) // dane pozycji
+                                      .OrderBy(p => p.Nazwisko).ThenBy(p => p.Imie)
+                                      .ToListAsync();
+
+            // znajdź aktualny klub zawodnika
+            foreach (var player in players)
+            {
+                var currentTransfer = await _context.Transfery
+                                                   .Where(t => t.IDzawodnika == player.IDzawodnika && t.DataOdejscia == null)
+                                                   .Include(t => t.Klub) //  dane klubu z transferu
+                                                   .OrderByDescending(t => t.DataDolaczenia)
+                                                   .FirstOrDefaultAsync();
+                if (currentTransfer != null)
+                {
+                    player.AktualnyKlub = currentTransfer.Klub;
+                }
+            }
+            return players;
+        }
+
+        public async Task<Player?> GetPlayerByIdAsync(int playerId)
+        {
+            var player = await _context.Zawodnicy
+                                 .Include(p => p.Pozycja)
+                                 .FirstOrDefaultAsync(p => p.IDzawodnika == playerId);
+
+            if (player != null)
+            {
+                var currentTransfer = await _context.Transfery
+                                                   .Where(t => t.IDzawodnika == player.IDzawodnika && t.DataOdejscia == null)
+                                                   .Include(t => t.Klub)
+                                                   .OrderByDescending(t => t.DataDolaczenia)
+                                                   .FirstOrDefaultAsync();
+                if (currentTransfer != null)
+                {
+                    player.AktualnyKlub = currentTransfer.Klub;
+                }
+            }
+            return player;
+        }
+
+        public async Task AddPlayerAsync(Player player, int? initialClubId)
+        {
+            // dodaj zawodnika, aby uzyskać ID
+            _context.Zawodnicy.Add(player);
+            await _context.SaveChangesAsync(); 
+
+
+            if (initialClubId.HasValue && initialClubId.Value != 0) 
+            {
+                var initialTransfer = new Transfer
+                {
+                    IDzawodnika = player.IDzawodnika,
+                    IDklubu = initialClubId.Value,
+                    DataDolaczenia = DateTime.Today, 
+                    DataOdejscia = null
+                };
+                _context.Transfery.Add(initialTransfer);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task UpdatePlayerAsync(Player player)
+        {
+            _context.Entry(player).State = EntityState.Modified;
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeletePlayerAsync(int playerId)
+        {
+            var player = await _context.Zawodnicy.FindAsync(playerId);
+            if (player != null)
+            {
+                
+                _context.Zawodnicy.Remove(player);
+                await _context.SaveChangesAsync();
+            }
+        }
+    }
+}

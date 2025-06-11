@@ -90,6 +90,12 @@
 	  <Compile Update="Views\LeagueTablePage.xaml.cs">
 	    <DependentUpon>LeagueTablePage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\AddEditPlayerPage.xaml.cs">
+	    <DependentUpon>AddEditPlayerPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\PlayerListPage.xaml.cs">
+	    <DependentUpon>PlayerListPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\ViewMatchesPage.xaml.cs">
 	    <DependentUpon>ViewMatchesPage.xaml</DependentUpon>
 	  </Compile>
@@ -100,6 +106,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\LeagueTablePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AddEditPlayerPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PlayerListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ViewMatchesPage.xaml">

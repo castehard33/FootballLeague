@@ -3,8 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\data\\footballleaguedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\data\\footballleaguedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\viewmodels\\addmatchviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\viewmodels\\addmatchviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\views\\playerlistpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\views\\playerlistpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\views\\addeditplayerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\views\\addeditplayerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\views\\playerlistpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\views\\playerlistpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\viewmodels\\playerlistviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\viewmodels\\playerlistviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\views\\addeditplayerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\views\\addeditplayerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|c:\\users\\bmedr\\desktop\\repos\\footballleague\\footballleaguesolution\\footballleague\\viewmodels\\addeditplayerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EACF8D3-655C-4CD0-8B0C-C1BAE880C59E}|FootballLeague\\FootballLeague.csproj|solutionrelative:footballleague\\viewmodels\\addeditplayerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +47,105 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FootballLeagueDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Data\\FootballLeagueDbContext.cs",
-              "RelativeDocumentMoniker": "FootballLeague\\Data\\FootballLeagueDbContext.cs",
-              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Data\\FootballLeagueDbContext.cs",
-              "RelativeToolTip": "FootballLeague\\Data\\FootballLeagueDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAABAAAAAAAAAA==",
+              "Title": "AddMatchViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\AddMatchViewModel.cs",
+              "RelativeDocumentMoniker": "FootballLeague\\ViewModels\\AddMatchViewModel.cs",
+              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\AddMatchViewModel.cs",
+              "RelativeToolTip": "FootballLeague\\ViewModels\\AddMatchViewModel.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAwwGUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-10T22:21:25.307Z",
+              "WhenOpened": "2025-06-10T23:47:36.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AddEditPlayerPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Views\\AddEditPlayerPage.xaml.cs",
+              "RelativeDocumentMoniker": "FootballLeague\\Views\\AddEditPlayerPage.xaml.cs",
+              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Views\\AddEditPlayerPage.xaml.cs",
+              "RelativeToolTip": "FootballLeague\\Views\\AddEditPlayerPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T23:21:42.723Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerListPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Views\\PlayerListPage.xaml.cs",
+              "RelativeDocumentMoniker": "FootballLeague\\Views\\PlayerListPage.xaml.cs",
+              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Views\\PlayerListPage.xaml.cs",
+              "RelativeToolTip": "FootballLeague\\Views\\PlayerListPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T23:09:00.116Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "FootballLeague\\MauiProgram.cs",
+              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\MauiProgram.cs",
+              "RelativeToolTip": "FootballLeague\\MauiProgram.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAApwE4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T23:05:09.494Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlayerListPage.xaml",
+              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Views\\PlayerListPage.xaml",
+              "RelativeDocumentMoniker": "FootballLeague\\Views\\PlayerListPage.xaml",
+              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Views\\PlayerListPage.xaml",
+              "RelativeToolTip": "FootballLeague\\Views\\PlayerListPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-10T23:04:41.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AddEditPlayerPage.xaml",
+              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Views\\AddEditPlayerPage.xaml",
+              "RelativeDocumentMoniker": "FootballLeague\\Views\\AddEditPlayerPage.xaml",
+              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\Views\\AddEditPlayerPage.xaml",
+              "RelativeToolTip": "FootballLeague\\Views\\AddEditPlayerPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-10T23:02:38.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PlayerListViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\PlayerListViewModel.cs",
+              "RelativeDocumentMoniker": "FootballLeague\\ViewModels\\PlayerListViewModel.cs",
+              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\PlayerListViewModel.cs",
+              "RelativeToolTip": "FootballLeague\\ViewModels\\PlayerListViewModel.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowAUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T23:01:35.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AddEditPlayerViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\AddEditPlayerViewModel.cs",
+              "RelativeDocumentMoniker": "FootballLeague\\ViewModels\\AddEditPlayerViewModel.cs",
+              "ToolTip": "C:\\Users\\bmedr\\Desktop\\REPOs\\FootballLeague\\FootballLeagueSolution\\FootballLeague\\ViewModels\\AddEditPlayerViewModel.cs",
+              "RelativeToolTip": "FootballLeague\\ViewModels\\AddEditPlayerViewModel.cs",
+              "ViewState": "AgIAAJsAAAAAAAAAAAAgwMUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T23:00:32.229Z",
               "EditorCaption": ""
             }
           ]

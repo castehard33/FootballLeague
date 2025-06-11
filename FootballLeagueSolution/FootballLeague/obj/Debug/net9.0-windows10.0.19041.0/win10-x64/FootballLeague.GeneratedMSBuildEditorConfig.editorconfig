@@ -65,6 +65,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = FootballLeague.Resources.S
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
+[C:/Users/bmedr/Desktop/REPOs/FootballLeague/FootballLeagueSolution/FootballLeague/Views/AddEditPlayerPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FootballLeague.Views.AddEditPlayerPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AddEditPlayerPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AddEditPlayerPage.xaml
+
 [C:/Users/bmedr/Desktop/REPOs/FootballLeague/FootballLeagueSolution/FootballLeague/Views/AddMatchPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = FootballLeague.Views.AddMatchPage.xaml
@@ -76,6 +82,12 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = FootballLeague.Views.LeagueTablePage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\LeagueTablePage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\LeagueTablePage.xaml
+
+[C:/Users/bmedr/Desktop/REPOs/FootballLeague/FootballLeagueSolution/FootballLeague/Views/PlayerListPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FootballLeague.Views.PlayerListPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PlayerListPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PlayerListPage.xaml
 
 [C:/Users/bmedr/Desktop/REPOs/FootballLeague/FootballLeagueSolution/FootballLeague/Views/ViewMatchesPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml

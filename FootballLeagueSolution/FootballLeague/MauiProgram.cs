@@ -6,7 +6,7 @@ using FootballLeague.ViewModels;
 using FootballLeague.Views;       
 using System.Reflection;
 using Microsoft.Extensions.Logging;
-using System.IO;
+
 
 namespace FootballLeague 
 {
@@ -47,6 +47,15 @@ namespace FootballLeague
 
             builder.Services.AddDbContext<FootballLeagueDbContext>(options =>
                 options.UseSqlServer(connectionString));
+
+            builder.Services.AddScoped<PositionService>();
+            builder.Services.AddScoped<PlayerService>();
+
+            builder.Services.AddTransient<AddEditPlayerViewModel>();
+            builder.Services.AddTransient<PlayerListViewModel>();
+
+            builder.Services.AddTransient<AddEditPlayerPage>();
+            builder.Services.AddTransient<PlayerListPage>();
 
             builder.Services.AddScoped<ClubService>();
             builder.Services.AddScoped<MatchService>();
