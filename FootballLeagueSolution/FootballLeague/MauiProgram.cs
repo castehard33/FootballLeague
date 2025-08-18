@@ -69,6 +69,16 @@ namespace FootballLeague
             builder.Services.AddTransient<AddMatchPage>();
             builder.Services.AddTransient<ViewMatchesPage>();
 
+
+            builder.Services.AddScoped<CoachService>();
+
+            builder.Services.AddTransient<CoachListViewModel>();
+            builder.Services.AddTransient<AddEditCoachViewModel>();
+
+            builder.Services.AddTransient<CoachListPage>();
+            builder.Services.AddTransient<AddEditCoachPage>();
+
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

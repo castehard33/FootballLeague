@@ -9,6 +9,7 @@ namespace FootballLeague
 
 
             Routing.RegisterRoute(nameof(AddEditPlayerPage), typeof(AddEditPlayerPage));
+            Routing.RegisterRoute(nameof(AddEditCoachPage), typeof(AddEditCoachPage));
 
         }
     }

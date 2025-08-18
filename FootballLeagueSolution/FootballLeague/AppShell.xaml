@@ -22,5 +22,9 @@
             Title="Zawodnicy"
             ContentTemplate="{DataTemplate views:PlayerListPage}"
             Route="PlayerListPage" />
+        <ShellContent
+            Title="Trenerzy"
+            ContentTemplate="{DataTemplate views:CoachListPage}"
+            Route="CoachListPage" />
     </FlyoutItem>
 </Shell>

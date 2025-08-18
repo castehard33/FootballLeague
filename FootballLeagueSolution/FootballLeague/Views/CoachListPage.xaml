@@ -1,0 +1,39 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FootballLeague.Views.CoachListPage"
+             xmlns:vm="clr-namespace:FootballLeague.ViewModels"
+             xmlns:model="clr-namespace:FootballLeague.Models"
+             x:DataType="vm:CoachListViewModel"
+             Title="{Binding Title}">
+    <Grid RowDefinitions="*,Auto">
+        <RefreshView Grid.Row="0" Command="{Binding LoadCoachesCommand}" IsRefreshing="{Binding IsBusy}">
+            <CollectionView ItemsSource="{Binding Coaches}"
+                            SelectionMode="None"
+                            EmptyView="Brak trenerów. Dodaj nowego.">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Coach">
+                        <Frame Padding="10" Margin="10,5" CornerRadius="5" BorderColor="LightGray">
+                            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding PelneNazwisko}" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="1" Grid.Column="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Licencja: "/>
+                                            <Span Text="{Binding Licencja, FallbackValue='Brak'}"/>
+                                            <Span Text=" | Klub: "/>
+                                            <Span Text="{Binding AktualnyKlub.Nazwa, FallbackValue='Brak'}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Text="Edytuj" VerticalOptions="Center"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CoachListViewModel}}, Path=GoToEditCoachCommand}"
+                                        CommandParameter="{Binding .}"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <Button Grid.Row="1" Text="Dodaj Nowego Trenera" Command="{Binding GoToAddCoachCommand}" Margin="10"/>
+    </Grid>
+</ContentPage>

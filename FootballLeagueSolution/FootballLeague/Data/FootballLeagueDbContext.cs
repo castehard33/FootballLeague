@@ -12,6 +12,8 @@ namespace FootballLeague.Data
         public DbSet<Player> Zawodnicy { get; set; }
         public DbSet<Position> Pozycje { get; set; }
         public DbSet<Transfer> Transfery { get; set; }
+        public DbSet<Coach> Trenerzy { get; set; }
+        public DbSet<CoachClubAssignment> TrenerzyKlubow { get; set; }
         public FootballLeagueDbContext(DbContextOptions<FootballLeagueDbContext> options) : base(options)
         {
         }
@@ -71,6 +73,25 @@ namespace FootballLeague.Data
                 .WithMany() 
                 .HasForeignKey(t => t.IDklubu)
                 .OnDelete(DeleteBehavior.Restrict);
-        }
+
+
+            modelBuilder.Entity<Coach>().ToTable("Trenerzy").HasKey(c => c.IDtrenera);
+            modelBuilder.Entity<Coach>().Property(c => c.IDtrenera).ValueGeneratedOnAdd();
+
+
+            modelBuilder.Entity<CoachClubAssignment>().ToTable("TrenerzyKlubow").HasKey(a => a.IDrelacji);
+            modelBuilder.Entity<CoachClubAssignment>().Property(a => a.IDrelacji).ValueGeneratedOnAdd();
+            modelBuilder.Entity<CoachClubAssignment>()
+                .HasOne(a => a.Trener)
+                .WithMany()
+                .HasForeignKey(a => a.IDtrenera)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<CoachClubAssignment>()
+                .HasOne(a => a.Klub)
+                .WithMany()
+                .HasForeignKey(a => a.IDklubu)
+                .OnDelete(DeleteBehavior.Restrict);
+        
+    }
     }
 }

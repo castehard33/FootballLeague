@@ -93,6 +93,12 @@
 	  <Compile Update="Views\AddEditPlayerPage.xaml.cs">
 	    <DependentUpon>AddEditPlayerPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\CoachListPage.xaml.cs">
+	    <DependentUpon>CoachListPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\AddEditCoachPage.xaml.cs">
+	    <DependentUpon>AddEditCoachPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\PlayerListPage.xaml.cs">
 	    <DependentUpon>PlayerListPage.xaml</DependentUpon>
 	  </Compile>
@@ -109,6 +115,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\AddEditPlayerPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CoachListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AddEditCoachPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PlayerListPage.xaml">

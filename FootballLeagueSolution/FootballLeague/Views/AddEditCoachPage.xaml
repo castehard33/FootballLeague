@@ -1,0 +1,36 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FootballLeague.Views.AddEditCoachPage"
+             xmlns:vm="clr-namespace:FootballLeague.ViewModels"
+             xmlns:converters="clr-namespace:FootballLeague.Converters" 
+             x:DataType="vm:AddEditCoachViewModel"
+             Title="{Binding Title}">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Padding="20">
+            <Label Text="Imię:" />
+            <Entry Text="{Binding Imie}" Placeholder="Wpisz imię" />
+
+            <Label Text="Nazwisko:" />
+            <Entry Text="{Binding Nazwisko}" Placeholder="Wpisz nazwisko" />
+
+            <Label Text="Licencja:" />
+            <Entry Text="{Binding Licencja}" Placeholder="Wpisz typ licencji" />
+
+            <Label Text="Klub:" />
+            <Picker ItemsSource="{Binding AvailableClubs}"
+                    ItemDisplayBinding="{Binding Nazwa}"
+                    SelectedItem="{Binding SelectedClub}"
+                    Title="Wybierz klub" />
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" HorizontalOptions="Center"/>
+
+            <Button Text="Zapisz" Command="{Binding SaveCoachCommand}" Margin="0,20,0,0"/>
+            <Button Text="Usuń" Command="{Binding DeleteCoachCommand}" IsVisible="{Binding CoachId, Converter={StaticResource IntToBoolConverter}}" BackgroundColor="Red" TextColor="White" Margin="0,5,0,0"/>
+        </VerticalStackLayout>
+    </ScrollView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:IntToBoolConverter x:Key="IntToBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>
