@@ -121,14 +121,7 @@ namespace FootballLeague.ViewModels
 
         public async Task OnAppearing()
         {
-            if (_allMatches.Count == 0 || FilterClubs.Count <= 1)
-            {
-                await LoadInitialDataAsync();
-            }
-            else if (!IsBusy)
-            {
-                ApplyFilters();
-            }
+            await LoadInitialDataAsync();
         }
     }
 }

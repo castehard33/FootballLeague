@@ -3,6 +3,10 @@ using CommunityToolkit.Mvvm.Input;
 using FootballLeague.Models;
 using FootballLeague.Services;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using Microsoft.Maui.Controls;
+using System;
+using System.Linq;
 using System.Diagnostics;
 
 namespace FootballLeague.ViewModels
@@ -14,6 +18,7 @@ namespace FootballLeague.ViewModels
         private readonly ClubService _clubService;
 
         public ObservableCollection<Club> AvailableClubs { get; } = new();
+        public ObservableCollection<string> AvailableLicenses { get; } = new();
 
         private int _coachId;
         public int CoachId
@@ -31,7 +36,7 @@ namespace FootballLeague.ViewModels
         [ObservableProperty]
         string? _nazwisko;
         [ObservableProperty]
-        string? _licencja;
+        string? _selectedLicense;
         [ObservableProperty]
         Club? _selectedClub;
 
@@ -43,6 +48,12 @@ namespace FootballLeague.ViewModels
             _coachService = coachService;
             _clubService = clubService;
             Title = "Dodaj Trenera";
+
+            AvailableLicenses.Add("UEFA Pro");
+            AvailableLicenses.Add("UEFA A");
+            AvailableLicenses.Add("UEFA B");
+            AvailableLicenses.Add("UEFA C");
+            AvailableLicenses.Add("Inna");
         }
 
         public async Task LoadInitialDataAsync()
@@ -54,9 +65,13 @@ namespace FootballLeague.ViewModels
                 if (AvailableClubs.Count == 0)
                 {
                     AvailableClubs.Clear();
-                    var clubs = await _clubService.GetClubsAsync();
                     AvailableClubs.Add(new Club { IdKlubu = 0, Nazwa = "Brak klubu" });
-                    foreach (var club in clubs) AvailableClubs.Add(club);
+
+                    var clubsWithoutCoach = await _clubService.GetClubsWithoutCoachAsync();
+                    foreach (var club in clubsWithoutCoach)
+                    {
+                        AvailableClubs.Add(club);
+                    }
                 }
             }
             catch (Exception ex)
@@ -76,7 +91,7 @@ namespace FootballLeague.ViewModels
                 Title = "Dodaj Trenera";
                 Imie = string.Empty;
                 Nazwisko = string.Empty;
-                Licencja = string.Empty;
+                SelectedLicense = AvailableLicenses.FirstOrDefault();
                 SelectedClub = AvailableClubs.FirstOrDefault(c => c.IdKlubu == 0);
                 _clubBeforeEdit = null;
                 _isEditing = false;
@@ -89,9 +104,15 @@ namespace FootballLeague.ViewModels
                 {
                     Imie = coach.Imie;
                     Nazwisko = coach.Nazwisko;
-                    Licencja = coach.Licencja;
-                    SelectedClub = coach.AktualnyKlub ?? AvailableClubs.FirstOrDefault(c => c.IdKlubu == 0);
+                    SelectedLicense = AvailableLicenses.Contains(coach.Licencja) ? coach.Licencja : "Inna";
+
                     _clubBeforeEdit = coach.AktualnyKlub;
+                    if (_clubBeforeEdit != null && !AvailableClubs.Any(c => c.IdKlubu == _clubBeforeEdit.IdKlubu))
+                    {
+                        AvailableClubs.Add(_clubBeforeEdit);
+                    }
+
+                    SelectedClub = coach.AktualnyKlub ?? AvailableClubs.FirstOrDefault(c => c.IdKlubu == 0);
                 }
                 _isEditing = true;
             }
@@ -100,7 +121,7 @@ namespace FootballLeague.ViewModels
         [RelayCommand]
         async Task SaveCoachAsync()
         {
-            if (string.IsNullOrWhiteSpace(Imie) || string.IsNullOrWhiteSpace(Nazwisko) || string.IsNullOrWhiteSpace(Licencja))
+            if (string.IsNullOrWhiteSpace(Imie) || string.IsNullOrWhiteSpace(Nazwisko) || string.IsNullOrWhiteSpace(SelectedLicense))
             {
                 await Shell.Current.DisplayAlert("Błąd", "Wszystkie pola są wymagane.", "OK");
                 return;
@@ -111,7 +132,7 @@ namespace FootballLeague.ViewModels
                 IDtrenera = _coachId,
                 Imie = Imie,
                 Nazwisko = Nazwisko,
-                Licencja = Licencja
+                Licencja = SelectedLicense
             };
 
             IsBusy = true;
@@ -148,8 +169,40 @@ namespace FootballLeague.ViewModels
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Błąd zapisywania trenera: {ex.ToString()}");
-                await Shell.Current.DisplayAlert("Błąd", $"Nie udało się zapisać trenera: {ex.Message}", "OK");
+
+                Debug.WriteLine("--------------------------------------------------");
+                Debug.WriteLine($"BŁĄD PODCZAS ZAPISYWANIA TRENERA: {ex.GetType().FullName}");
+                Debug.WriteLine($"Message: {ex.Message}");
+                Debug.WriteLine($"StackTrace: {ex.StackTrace}");
+
+                Exception? innerEx = ex.InnerException;
+                int depth = 1;
+                while (innerEx != null)
+                {
+                    Debug.WriteLine($"--- Inner Exception (Poziom {depth}) ---");
+                    Debug.WriteLine($"Inner Exception Type: {innerEx.GetType().FullName}");
+                    Debug.WriteLine($"Inner Exception Message: {innerEx.Message}");
+                    Debug.WriteLine($"Inner Exception StackTrace: {innerEx.StackTrace}");
+                    innerEx = innerEx.InnerException;
+                    depth++;
+                }
+                Debug.WriteLine("--------------------------------------------------");
+
+
+                string errorMessage = "Nie udało się zapisać trenera.";
+                if (ex.InnerException != null)
+                {
+                    errorMessage += $"\n\nSzczegóły błędu (dla dewelopera):\n{ex.InnerException.Message}";
+                    if (ex.InnerException.InnerException != null)
+                    {
+                        errorMessage += $"\n{ex.InnerException.InnerException.Message}";
+                    }
+                }
+                else
+                {
+                    errorMessage += $"\n\nSzczegóły błędu (dla dewelopera):\n{ex.Message}";
+                }
+                await Shell.Current.DisplayAlert("Błąd Krytyczny", errorMessage, "OK");
             }
             finally { IsBusy = false; }
         }

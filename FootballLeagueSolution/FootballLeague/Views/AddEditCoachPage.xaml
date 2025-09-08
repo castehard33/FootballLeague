@@ -2,9 +2,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FootballLeague.Views.AddEditCoachPage"
              xmlns:vm="clr-namespace:FootballLeague.ViewModels"
-             xmlns:converters="clr-namespace:FootballLeague.Converters" 
+             xmlns:local="clr-namespace:FootballLeague.Views"
              x:DataType="vm:AddEditCoachViewModel"
              Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:IntToBoolConverter x:Key="IntToBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ScrollView>
         <VerticalStackLayout Spacing="10" Padding="20">
             <Label Text="Imię:" />
@@ -14,7 +20,9 @@
             <Entry Text="{Binding Nazwisko}" Placeholder="Wpisz nazwisko" />
 
             <Label Text="Licencja:" />
-            <Entry Text="{Binding Licencja}" Placeholder="Wpisz typ licencji" />
+            <Picker ItemsSource="{Binding AvailableLicenses}"
+                    SelectedItem="{Binding SelectedLicense}"
+                    Title="Wybierz licencję" />
 
             <Label Text="Klub:" />
             <Picker ItemsSource="{Binding AvailableClubs}"
@@ -28,9 +36,4 @@
             <Button Text="Usuń" Command="{Binding DeleteCoachCommand}" IsVisible="{Binding CoachId, Converter={StaticResource IntToBoolConverter}}" BackgroundColor="Red" TextColor="White" Margin="0,5,0,0"/>
         </VerticalStackLayout>
     </ScrollView>
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converters:IntToBoolConverter x:Key="IntToBoolConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
 </ContentPage>
