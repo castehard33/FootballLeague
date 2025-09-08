@@ -22,10 +22,8 @@ namespace FootballLeague.Models
         public virtual Stadium? Stadion { get; set; } 
 
 
-        public byte? BramkiGospodarza { get; set; }
-        public byte? BramkiGoscia { get; set; }
+        public byte BramkiGospodarza { get; set; }
+        public byte BramkiGoscia { get; set; }
 
-        [NotMapped]
-        public bool CzyRozegrany => BramkiGospodarza.HasValue && BramkiGoscia.HasValue;
     }
 }

@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using FootballLeague.Data;
 using FootballLeague.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-
-namespace FootballLeague.Services 
+namespace FootballLeague.Services
 {
     public class LeagueTableService
     {
@@ -17,10 +19,8 @@ namespace FootballLeague.Services
         public async Task<List<LeagueTableEntry>> GetLeagueTableAsync()
         {
             var kluby = await _context.Kluby.ToListAsync();
-            
-            var mecze = await _context.Mecze
-                                      .Where(m => m.BramkiGospodarza.HasValue && m.BramkiGoscia.HasValue)
-                                      .ToListAsync();
+
+            var wszystkieMecze = await _context.Mecze.ToListAsync();
 
             var tableEntries = new List<LeagueTableEntry>();
 
@@ -30,36 +30,30 @@ namespace FootballLeague.Services
                 {
                     KlubId = klub.IdKlubu,
                     NazwaKlubu = klub.Nazwa
-
                 };
 
-               
-                var meczeKlubu = mecze.Where(m => m.IdGospodarza == klub.IdKlubu || m.IdGoscia == klub.IdKlubu);
+                var meczeKlubu = wszystkieMecze.Where(m => m.IdGospodarza == klub.IdKlubu || m.IdGoscia == klub.IdKlubu);
 
                 foreach (var mecz in meczeKlubu)
                 {
                     entry.MeczeRozegrane++;
                     bool isGospodarz = mecz.IdGospodarza == klub.IdKlubu;
 
-                    
-                    if (mecz.BramkiGospodarza.HasValue && mecz.BramkiGoscia.HasValue)
+                    if (isGospodarz)
                     {
-                        if (isGospodarz)
-                        {
-                            entry.BramkiZdobyte += mecz.BramkiGospodarza.Value;
-                            entry.BramkiStracone += mecz.BramkiGoscia.Value;
-                            if (mecz.BramkiGospodarza > mecz.BramkiGoscia) entry.Zwyciestwa++;
-                            else if (mecz.BramkiGospodarza < mecz.BramkiGoscia) entry.Porazki++;
-                            else entry.Remisy++;
-                        }
-                        else //gość
-                        {
-                            entry.BramkiZdobyte += mecz.BramkiGoscia.Value;
-                            entry.BramkiStracone += mecz.BramkiGospodarza.Value;
-                            if (mecz.BramkiGoscia > mecz.BramkiGospodarza) entry.Zwyciestwa++;
-                            else if (mecz.BramkiGoscia < mecz.BramkiGospodarza) entry.Porazki++;
-                            else entry.Remisy++;
-                        }
+                        entry.BramkiZdobyte += mecz.BramkiGospodarza;
+                        entry.BramkiStracone += mecz.BramkiGoscia;
+                        if (mecz.BramkiGospodarza > mecz.BramkiGoscia) entry.Zwyciestwa++;
+                        else if (mecz.BramkiGospodarza < mecz.BramkiGoscia) entry.Porazki++;
+                        else entry.Remisy++;
+                    }
+                    else
+                    {
+                        entry.BramkiZdobyte += mecz.BramkiGoscia;
+                        entry.BramkiStracone += mecz.BramkiGospodarza;
+                        if (mecz.BramkiGoscia > mecz.BramkiGospodarza) entry.Zwyciestwa++;
+                        else if (mecz.BramkiGoscia < mecz.BramkiGospodarza) entry.Porazki++;
+                        else entry.Remisy++;
                     }
                 }
                 tableEntries.Add(entry);

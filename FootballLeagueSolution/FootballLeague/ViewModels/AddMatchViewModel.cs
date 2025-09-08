@@ -97,32 +97,25 @@ namespace FootballLeague.ViewModels
             }
 
 
-            byte? parsedHomeScore = null;
+            byte parsedHomeScore = 0; // Krok 1: Inicjalizuj na 0
             if (!string.IsNullOrWhiteSpace(HomeScore))
             {
-                if (byte.TryParse(HomeScore, out byte hs))
-                    parsedHomeScore = hs;
-                else
+                if (!byte.TryParse(HomeScore, out parsedHomeScore)) // Krok 2: Spróbuj sparsować, jeśli użytkownik coś wpisał
                 {
                     await Shell.Current.DisplayAlert("Błąd", "Nieprawidłowy wynik gospodarzy.", "OK"); return;
                 }
             }
+            // Jeśli HomeScore jest puste, parsedHomeScore pozostaje 0.
 
-            byte? parsedAwayScore = null;
+            byte parsedAwayScore = 0; // Krok 1: Inicjalizuj na 0
             if (!string.IsNullOrWhiteSpace(AwayScore))
             {
-                if (byte.TryParse(AwayScore, out byte as_))
-                    parsedAwayScore = as_;
-                else
+                if (!byte.TryParse(AwayScore, out parsedAwayScore)) // Krok 2: Spróbuj sparsować, jeśli użytkownik coś wpisał
                 {
                     await Shell.Current.DisplayAlert("Błąd", "Nieprawidłowy wynik gości.", "OK"); return;
                 }
             }
 
-            if ((parsedHomeScore.HasValue && !parsedAwayScore.HasValue) || (!parsedHomeScore.HasValue && parsedAwayScore.HasValue))
-            {
-                await Shell.Current.DisplayAlert("Błąd", "Podaj oba wyniki lub żaden (dla meczu nierozegranego).", "OK"); return;
-            }
 
             
             DateTime combinedDateTime = MatchDatePart.Date + MatchTimePart;
