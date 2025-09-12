@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using FootballLeague.Data;
 using FootballLeague.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace FootballLeague.Services
 {

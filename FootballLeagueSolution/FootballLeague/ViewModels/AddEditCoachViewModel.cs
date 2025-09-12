@@ -192,7 +192,7 @@ namespace FootballLeague.ViewModels
                 string errorMessage = "Nie udało się zapisać trenera.";
                 if (ex.InnerException != null)
                 {
-                    errorMessage += $"\n\nSzczegóły błędu (dla dewelopera):\n{ex.InnerException.Message}";
+                    errorMessage += $"\n\nSzczegóły błędu:\n{ex.InnerException.Message}";
                     if (ex.InnerException.InnerException != null)
                     {
                         errorMessage += $"\n{ex.InnerException.InnerException.Message}";
@@ -200,7 +200,7 @@ namespace FootballLeague.ViewModels
                 }
                 else
                 {
-                    errorMessage += $"\n\nSzczegóły błędu (dla dewelopera):\n{ex.Message}";
+                    errorMessage += $"\n\nSzczegóły błędu:\n{ex.Message}";
                 }
                 await Shell.Current.DisplayAlert("Błąd Krytyczny", errorMessage, "OK");
             }

@@ -97,20 +97,20 @@ namespace FootballLeague.ViewModels
             }
 
 
-            byte parsedHomeScore = 0; // Krok 1: Inicjalizuj na 0
+            byte parsedHomeScore = 0; 
             if (!string.IsNullOrWhiteSpace(HomeScore))
             {
-                if (!byte.TryParse(HomeScore, out parsedHomeScore)) // Krok 2: Spróbuj sparsować, jeśli użytkownik coś wpisał
+                if (!byte.TryParse(HomeScore, out parsedHomeScore)) 
                 {
                     await Shell.Current.DisplayAlert("Błąd", "Nieprawidłowy wynik gospodarzy.", "OK"); return;
                 }
             }
-            // Jeśli HomeScore jest puste, parsedHomeScore pozostaje 0.
 
-            byte parsedAwayScore = 0; // Krok 1: Inicjalizuj na 0
+
+            byte parsedAwayScore = 0; 
             if (!string.IsNullOrWhiteSpace(AwayScore))
             {
-                if (!byte.TryParse(AwayScore, out parsedAwayScore)) // Krok 2: Spróbuj sparsować, jeśli użytkownik coś wpisał
+                if (!byte.TryParse(AwayScore, out parsedAwayScore)) 
                 {
                     await Shell.Current.DisplayAlert("Błąd", "Nieprawidłowy wynik gości.", "OK"); return;
                 }
@@ -149,7 +149,7 @@ namespace FootballLeague.ViewModels
                 while (innerEx != null) { Debug.WriteLine($"--- Inner Exception (Poziom {depth}) ---"); Debug.WriteLine($"Inner Exception Type: {innerEx.GetType().FullName}"); Debug.WriteLine($"Inner Exception Message: {innerEx.Message}"); Debug.WriteLine($"Inner Exception StackTrace: {innerEx.StackTrace}"); innerEx = innerEx.InnerException; depth++; }
                 Debug.WriteLine("--------------------------------------------------");
                 string errorMessage = "Nie udało się dodać meczu.";
-                if (ex.InnerException != null) { errorMessage += $"\n\nSzczegóły błędu (dla dewelopera):\n{ex.InnerException.Message}"; if (ex.InnerException.InnerException != null) { errorMessage += $"\n{ex.InnerException.InnerException.Message}"; } } else { errorMessage += $"\n\nSzczegóły błędu (dla dewelopera):\n{ex.Message}"; }
+                if (ex.InnerException != null) { errorMessage += $"\n\nSzczegóły błędu :\n{ex.InnerException.Message}"; if (ex.InnerException.InnerException != null) { errorMessage += $"\n{ex.InnerException.InnerException.Message}"; } } else { errorMessage += $"\n\nSzczegóły błędu :\n{ex.Message}"; }
                 await Shell.Current.DisplayAlert("Błąd Krytyczny", errorMessage, "OK");
             }
             finally
